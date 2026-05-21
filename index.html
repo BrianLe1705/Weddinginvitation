@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Save The Date · [Name] &amp; [Name]</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Montserrat:wght@100;200;300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- GSAP (must load before main.js) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+<!-- ── FIXED BACKGROUND PHOTO ─────────────────────────── -->
+<div id="couple-bg"></div>
+
+<!-- ── FLOATING DUST PARTICLES ────────────────────────── -->
+<canvas id="particles"></canvas>
+
+<!-- ── LOADER ─────────────────────────────────────────── -->
+<div id="loader">
+  <span class="loader-word">preparing your invitation…</span>
+</div>
+
+<!-- ── MUSIC TOGGLE ───────────────────────────────────── -->
+<button id="music-btn" aria-label="Toggle music">
+  <svg id="ic-on" viewBox="0 0 24 24">
+    <path d="M9 18V5l12-2v13"/>
+    <circle cx="6"  cy="18" r="3"/>
+    <circle cx="18" cy="16" r="3"/>
+  </svg>
+  <svg id="ic-off" viewBox="0 0 24 24" style="display:none">
+    <path d="M9 18V5l12-2v13"/>
+    <circle cx="6"  cy="18" r="3"/>
+    <circle cx="18" cy="16" r="3"/>
+    <line x1="3" y1="3" x2="21" y2="21" stroke="var(--champ)" stroke-width="1.5"/>
+  </svg>
+</button>
+
+<!-- ── AUDIO ──────────────────────────────────────────── -->
+<!-- REPLACE src WITH YOUR MUSIC FILE PATH OR URL        -->
+<audio id="wedding-audio" loop preload="none">
+  <source src="YOUR_MUSIC_FILE.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ════════════════════════════════════════════════════
+     HERO — sticky envelope
+════════════════════════════════════════════════════ -->
+<section id="hero">
+  <div id="hero-sticky">
+
+    <!-- Envelope -->
+    <div id="envelope">
+
+      <!-- RIGHT FLAP (tucked behind left) -->
+      <div id="flap-right">
+        <div id="flap-wm">
+          <!-- Soft floral watermark -->
+          <svg viewBox="0 0 220 320" width="72%" height="72%"
+               xmlns="http://www.w3.org/2000/svg" fill="#7A5C3A">
+            <circle cx="110" cy="160" r="56" fill="none" stroke="#7A5C3A" stroke-width=".4"/>
+            <circle cx="110" cy="160" r="36" fill="none" stroke="#7A5C3A" stroke-width=".3"/>
+            <ellipse cx="110" cy="118" rx="11" ry="28" opacity=".28"/>
+            <ellipse cx="110" cy="202" rx="11" ry="28" opacity=".28"/>
+            <ellipse cx="68"  cy="160" rx="28" ry="11" opacity=".28"/>
+            <ellipse cx="152" cy="160" rx="28" ry="11" opacity=".28"/>
+            <ellipse cx="83"  cy="133" rx="11" ry="28" opacity=".20" transform="rotate(-45 83 133)"/>
+            <ellipse cx="137" cy="133" rx="11" ry="28" opacity=".20" transform="rotate(45 137 133)"/>
+            <ellipse cx="83"  cy="187" rx="11" ry="28" opacity=".20" transform="rotate(45 83 187)"/>
+            <ellipse cx="137" cy="187" rx="11" ry="28" opacity=".20" transform="rotate(-45 137 187)"/>
+            <path d="M110,56 Q120,30 130,18" stroke="#7A5C3A" stroke-width=".6" fill="none" opacity=".32"/>
+            <path d="M110,56 Q98,28 88,18"   stroke="#7A5C3A" stroke-width=".6" fill="none" opacity=".32"/>
+            <path d="M110,264 Q120,290 130,302" stroke="#7A5C3A" stroke-width=".6" fill="none" opacity=".32"/>
+            <path d="M110,264 Q98,292 88,302"   stroke="#7A5C3A" stroke-width=".6" fill="none" opacity=".32"/>
+            <ellipse cx="110" cy="52"  rx="6" ry="18" opacity=".18"/>
+            <ellipse cx="110" cy="268" rx="6" ry="18" opacity=".18"/>
+          </svg>
+        </div>
+      </div><!-- /flap-right -->
+
+      <!-- LEFT FLAP (dominant) -->
+      <div id="flap-left">
+
+        <!-- Floral corner — top left -->
+        <svg class="fcorner tl" viewBox="0 0 120 120"
+             xmlns="http://www.w3.org/2000/svg" fill="none">
+          <g stroke="#8B6E4A" stroke-width=".7">
+            <path d="M12,108 Q32,78 54,48 Q72,24 94,10"/>
+            <path d="M26,94 Q10,74 22,60"/>
+            <path d="M26,94 Q42,80 36,64"/>
+            <path d="M48,64 Q30,46 40,34"/>
+            <path d="M48,64 Q64,50 58,36"/>
+            <circle cx="88" cy="14" r="4.5" stroke-width=".65"/>
+            <circle cx="88" cy="14" r="1.8" fill="#8B6E4A" opacity=".42"/>
+            <circle cx="98" cy="26" r="3"   stroke-width=".6"/>
+            <circle cx="78" cy="24" r="3"   stroke-width=".6"/>
+            <circle cx="20" cy="98" r="2.2" fill="#8B6E4A" opacity=".35"/>
+            <circle cx="58" cy="40" r="1.6" fill="#8B6E4A" opacity=".32"/>
+            <circle cx="36" cy="28" r="2"   fill="#8B6E4A" opacity=".28"/>
+          </g>
+        </svg>
+
+        <!-- Floral corner — bottom left (mirrored) -->
+        <svg class="fcorner bl" viewBox="0 0 120 120"
+             xmlns="http://www.w3.org/2000/svg" fill="none">
+          <g stroke="#8B6E4A" stroke-width=".7">
+            <path d="M12,108 Q32,78 54,48 Q72,24 94,10"/>
+            <path d="M26,94 Q10,74 22,60"/>
+            <path d="M26,94 Q42,80 36,64"/>
+            <path d="M48,64 Q30,46 40,34"/>
+            <path d="M48,64 Q64,50 58,36"/>
+            <circle cx="88" cy="14" r="4.5" stroke-width=".65"/>
+            <circle cx="88" cy="14" r="1.8" fill="#8B6E4A" opacity=".42"/>
+            <circle cx="98" cy="26" r="3"   stroke-width=".6"/>
+            <circle cx="78" cy="24" r="3"   stroke-width=".6"/>
+            <circle cx="20" cy="98" r="2.2" fill="#8B6E4A" opacity=".35"/>
+            <circle cx="58" cy="40" r="1.6" fill="#8B6E4A" opacity=".32"/>
+            <circle cx="36" cy="28" r="2"   fill="#8B6E4A" opacity=".28"/>
+          </g>
+        </svg>
+
+        <!-- Typography content -->
+        <div id="flap-content">
+          <p class="fc-label">You are cordially invited</p>
+
+          <h1 class="fc-main">Save<br>The<br>Date</h1>
+
+          <div class="fc-orn">
+            <span></span>
+            <svg viewBox="0 0 16 16">
+              <path d="M8 0l1.6 5.4L16 8l-6.4 1.6L8 16l-1.6-6.4L0 8l6.4-1.6z"/>
+            </svg>
+            <span></span>
+          </div>
+
+          <p class="fc-names">[Name] &amp; [Name]</p>
+          <p class="fc-date">[Day] &middot; [Month] &middot; [Year]</p>
+        </div>
+
+        <!-- Wax seal — child of left flap, travels with it during animation -->
+        <div id="wax-seal">
+          <img src="images/letter wax.png" alt="Wax seal">
+        </div>
+
+      </div><!-- /flap-left -->
+    </div><!-- /envelope -->
+
+    <!-- Scroll cue -->
+    <div id="scroll-cue">
+      <p>scroll to open</p>
+      <div class="sc-line"></div>
+    </div>
+
+  </div><!-- /hero-sticky -->
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     CONTENT
+════════════════════════════════════════════════════ -->
+<div id="content">
+
+  <!-- ── Couple Names ────────────────────────────────── -->
+  <section id="sec-couple">
+    <p class="eyebrow fu">We joyfully announce</p>
+    <div class="couple-names fu">
+      <span>[Name]</span>
+      <span class="ampersand">&amp;</span>
+      <span>[Name]</span>
+    </div>
+    <p class="wedding-date fu">[Day of Week] &middot; [Date] &middot; [Year]</p>
+    <p class="wedding-location fu">[City], [Country]</p>
+  </section>
+
+  <!-- Ornament divider -->
+  <div class="orn-divider">
+    <svg width="190" height="18" viewBox="0 0 190 18" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0"   y1="9" x2="82"  y2="9" stroke="#C9A96E" stroke-width=".5" opacity=".38"/>
+      <polygon points="95,1 99,9 95,17 91,9" fill="#C9A96E" opacity=".48"/>
+      <line x1="108" y1="9" x2="190" y2="9" stroke="#C9A96E" stroke-width=".5" opacity=".38"/>
+    </svg>
+  </div>
+
+  <!-- ── Wedding Details ─────────────────────────────── -->
+  <section id="sec-details">
+    <h2 class="sec-title fu">The Details</h2>
+    <div class="details-grid">
+
+      <div class="d-card fu">
+        <div class="d-icon">◇</div>
+        <div class="d-label">Date</div>
+        <div class="d-value">[Month] [Day]<br>[Year]</div>
+        <div class="d-sub">[Day of Week]</div>
+      </div>
+
+      <div class="d-card fu">
+        <div class="d-icon">◇</div>
+        <div class="d-label">Ceremony</div>
+        <div class="d-value">[Ceremony Venue]</div>
+        <div class="d-sub">[Address] &middot; [Time]</div>
+      </div>
+
+      <div class="d-card fu">
+        <div class="d-icon">◇</div>
+        <div class="d-label">Reception</div>
+        <div class="d-value">[Reception Venue]</div>
+        <div class="d-sub">[Address] &middot; [Time]</div>
+      </div>
+
+      <div class="d-card fu">
+        <div class="d-icon">◇</div>
+        <div class="d-label">Dress Code</div>
+        <div class="d-value">Black Tie</div>
+        <div class="d-sub">Formal Attire Requested</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Day-of Timeline ────────────────────────────── -->
+  <section id="sec-timeline">
+    <h2 class="sec-title fu">Day of Love</h2>
+    <div class="timeline">
+
+      <div class="tl-item fu">
+        <div class="tl-content">
+          <div class="tl-time">3:00 PM</div>
+          <div class="tl-ev">Ceremony</div>
+          <div class="tl-place">[Ceremony Venue]</div>
+        </div>
+        <div class="tl-dot"></div>
+        <div class="tl-empty"></div>
+      </div>
+
+      <div class="tl-item fu">
+        <div class="tl-empty"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-time">4:30 PM</div>
+          <div class="tl-ev">Cocktail Hour</div>
+          <div class="tl-place">Garden Terrace</div>
+        </div>
+      </div>
+
+      <div class="tl-item fu">
+        <div class="tl-content">
+          <div class="tl-time">6:00 PM</div>
+          <div class="tl-ev">Reception</div>
+          <div class="tl-place">[Reception Venue]</div>
+        </div>
+        <div class="tl-dot"></div>
+        <div class="tl-empty"></div>
+      </div>
+
+      <div class="tl-item fu">
+        <div class="tl-empty"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-time">7:30 PM</div>
+          <div class="tl-ev">Dinner &amp; Toasts</div>
+          <div class="tl-place">Grand Ballroom</div>
+        </div>
+      </div>
+
+      <div class="tl-item fu">
+        <div class="tl-content">
+          <div class="tl-time">9:00 PM</div>
+          <div class="tl-ev">First Dance</div>
+          <div class="tl-place">&amp; Dancing Until Midnight</div>
+        </div>
+        <div class="tl-dot"></div>
+        <div class="tl-empty"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Gallery ─────────────────────────────────────── -->
+  <section id="sec-gallery">
+    <h2 class="sec-title fu">Our Story</h2>
+    <div class="gallery-grid">
+      <div class="g-item fu">
+        <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800&q=80"
+             alt="Couple" loading="lazy">
+      </div>
+      <div class="g-item fu">
+        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=700&q=80"
+             alt="Couple" loading="lazy">
+      </div>
+      <div class="g-item fu">
+        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=700&q=80"
+             alt="Wedding" loading="lazy">
+      </div>
+      <div class="g-item fu">
+        <img src="https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=700&q=80"
+             alt="Couple" loading="lazy">
+      </div>
+      <div class="g-item fu">
+        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=700&q=80"
+             alt="Wedding" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RSVP ────────────────────────────────────────── -->
+  <section id="sec-rsvp">
+    <p class="eyebrow fu">Kindly Reply By [Date]</p>
+    <h2 class="sec-title fu">Will You Join Us?</h2>
+    <form class="rsvp-form" id="rsvp-form">
+
+      <div class="fg fu">
+        <label>Full Name</label>
+        <input type="text" name="name" placeholder="Your full name" required>
+      </div>
+
+      <div class="fg fu">
+        <label>Email Address</label>
+        <input type="email" name="email" placeholder="your@email.com" required>
+      </div>
+
+      <div class="fg fu">
+        <label>Attendance</label>
+        <select name="attendance" required>
+          <option value="" disabled selected>Please select</option>
+          <option value="yes">Joyfully accepts</option>
+          <option value="no">Regretfully declines</option>
+        </select>
+      </div>
+
+      <div class="fg fu">
+        <label>Number of Guests</label>
+        <select name="guests">
+          <option value="1">1 guest</option>
+          <option value="2">2 guests</option>
+        </select>
+      </div>
+
+      <div class="fg fu">
+        <label>Dietary Requirements</label>
+        <input type="text" name="dietary" placeholder="Any allergies or preferences">
+      </div>
+
+      <div style="text-align:center" class="fu">
+        <button class="btn-rsvp" type="submit">Send RSVP</button>
+      </div>
+
+    </form>
+  </section>
+
+  <!-- ── Footer ──────────────────────────────────────── -->
+  <footer>
+    <div class="ft-mono">[N] &amp; [N]</div>
+    <p class="ft-text">[Date] &middot; [Venue] &middot; [City]</p>
+    <p class="ft-text ft-made">Made with love</p>
+  </footer>
+
+</div><!-- /content -->
+
+</body>
+</html>

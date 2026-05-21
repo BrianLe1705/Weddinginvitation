@@ -1,0 +1,206 @@
+/* ═══════════════════════════════════════════════════════
+   WEDDING INVITATION — main.js
+   Depends on: GSAP 3 + ScrollTrigger (loaded before this file)
+═══════════════════════════════════════════════════════ */
+
+gsap.registerPlugin(ScrollTrigger);
+
+/* ─── DOM REFERENCES ─────────────────────────────────── */
+const loader    = document.getElementById('loader');
+const envelope  = document.getElementById('envelope');
+const flapL     = document.getElementById('flap-left');
+const flapR     = document.getElementById('flap-right');
+const coupleBg  = document.getElementById('couple-bg');
+const scrollCue = document.getElementById('scroll-cue');
+const audio     = document.getElementById('wedding-audio');
+const musicBtn  = document.getElementById('music-btn');
+const icOn      = document.getElementById('ic-on');
+const icOff     = document.getElementById('ic-off');
+
+/* ─── LOADER ─────────────────────────────────────────── */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    loader.classList.add('out');
+    setTimeout(() => loader.remove(), 900);
+  }, 1000);
+});
+
+/* ─── IDLE FLOAT ─────────────────────────────────────── */
+/* Subtle breathing motion before the user scrolls       */
+const floatAnim = gsap.to(envelope, {
+  y: -10,
+  duration: 3.8,
+  ease: 'sine.inOut',
+  yoyo: true,
+  repeat: -1,
+});
+
+/* ─── ENVELOPE OPEN — SCROLL TRIGGER ─────────────────── */
+const openTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: '#hero',
+    start: 'top top',
+    end: '72% top',
+    scrub: 1.4,
+    onEnter() {
+      floatAnim.kill();
+      gsap.set(envelope, { y: 0 });
+      initAudio();
+    },
+  },
+});
+
+openTl
+  /* Fade out scroll cue immediately */
+  .to(scrollCue, { opacity: 0, duration: .12 }, 0)
+
+  /* LEFT flap — heavier physics, slightly slower */
+  .to(flapL, {
+    x: '-108%',
+    rotationZ: -1.8,
+    transformOrigin: 'left center',
+    ease: 'power2.inOut',
+    duration: 1,
+  }, 0.04)
+
+  /* RIGHT flap — lighter, fractionally faster */
+  .to(flapR, {
+    x: '108%',
+    rotationZ: 1.2,
+    transformOrigin: 'right center',
+    ease: 'power2.inOut',
+    duration: .92,
+  }, 0.10)
+
+  /* Couple photo: fade + subtle scale-down reveal */
+  .fromTo(
+    coupleBg,
+    { opacity: 0, scale: 1.07 },
+    { opacity: 1, scale: 1, ease: 'power1.out', duration: .72 },
+    0.30
+  );
+
+/* ─── FLOATING DUST PARTICLES ────────────────────────── */
+(function initParticles() {
+  const canvas = document.getElementById('particles');
+  const ctx    = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  const COLORS = [
+    'rgba(201,169,110,',
+    'rgba(232,213,183,',
+    'rgba(255,245,225,',
+  ];
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  for (let i = 0; i < 38; i++) {
+    particles.push({
+      x:     Math.random() * window.innerWidth,
+      y:     Math.random() * window.innerHeight,
+      r:     Math.random() * 1.4 + 0.25,
+      vx:    (Math.random() - 0.5) * 0.18,
+      vy:    -(Math.random() * 0.28 + 0.08),
+      alpha: Math.random() * 0.38 + 0.08,
+      color: COLORS[Math.floor(Math.random() * COLORS.length)],
+    });
+  }
+
+  function tick() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.y < -5)    { p.y = H + 5; p.x = Math.random() * W; }
+      if (p.x < -5)      p.x = W + 5;
+      if (p.x > W + 5)   p.x = -5;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color + p.alpha + ')';
+      ctx.fill();
+    });
+    requestAnimationFrame(tick);
+  }
+  tick();
+}());
+
+/* ─── FADE-UP ON SCROLL ──────────────────────────────── */
+gsap.utils.toArray('.fu').forEach(el => {
+  gsap.fromTo(
+    el,
+    { opacity: 0, y: 34 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: .95,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 87%',
+        toggleActions: 'play none none none',
+      },
+    }
+  );
+});
+
+/* ─── AUDIO SYSTEM ───────────────────────────────────── */
+let audioReady = false;
+let playing    = false;
+
+function fadeIn() {
+  audio.volume = 0;
+  audio.play()
+    .then(() => {
+      playing = true;
+      musicBtn.classList.add('playing');
+      icOff.style.display = 'none';
+      icOn.style.display  = '';
+      gsap.to(audio, { volume: .65, duration: 3, ease: 'power1.out' });
+    })
+    .catch(() => {
+      /* Autoplay blocked by browser — silently ignore */
+    });
+}
+
+function fadeOut() {
+  gsap.to(audio, {
+    volume: 0,
+    duration: 1.2,
+    onComplete: () => audio.pause(),
+  });
+  playing = false;
+  musicBtn.classList.remove('playing');
+  icOn.style.display  = 'none';
+  icOff.style.display = '';
+}
+
+function initAudio() {
+  if (!audioReady) {
+    audioReady = true;
+    fadeIn();
+  }
+}
+
+/* Trigger on first scroll or touch (mobile autoplay policy) */
+window.addEventListener('scroll',     () => initAudio(), { once: true });
+window.addEventListener('touchstart', () => initAudio(), { once: true, passive: true });
+
+/* Manual toggle */
+musicBtn.addEventListener('click', () => {
+  if (!audioReady) { audioReady = true; fadeIn();  }
+  else if (playing) { fadeOut(); }
+  else              { fadeIn();  }
+});
+
+/* ─── RSVP FORM ──────────────────────────────────────── */
+document.getElementById('rsvp-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const btn = e.target.querySelector('.btn-rsvp');
+  btn.textContent = 'Thank you ♡';
+  btn.disabled = true;
+});
