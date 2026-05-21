@@ -40,8 +40,8 @@ const openTl = gsap.timeline({
   scrollTrigger: {
     trigger: '#hero',
     start: 'top top',
-    end: '72% top',
-    scrub: 1.4,
+    end: '40% top',
+    scrub: 0.6,
     onEnter() {
       floatAnim.kill();
       gsap.set(envelope, { y: 0 });

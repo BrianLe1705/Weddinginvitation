@@ -133,15 +133,13 @@ body::after {
   will-change: transform;
   transform-origin: left center;
 
-  /* ─── YOUR IMAGE ────────────────────────────────────────
-     Replace envelope-cover.jpg with your actual filename.
-     Supported formats: .jpg  .jpeg  .png  .webp
+  /* ─── REPLACE WITH YOUR LEFT FLAP IMAGE ─────────────────
+     Drop your file into images/ and update the filename below.
+     Supported: .jpg  .jpeg  .png  .webp
   ──────────────────────────────────────────────────────── */
   background-image:
-    /* Cinematic light overlay — keeps text legible */
-    linear-gradient(160deg, rgba(255, 252, 248, .18) 0%, rgba(0, 0, 0, .08) 100%),
-    /* ↓ YOUR IMAGE FILE */
-    url('../images/envelope-cover.jpg');
+    linear-gradient(160deg, rgba(255, 252, 248, .15) 0%, rgba(0, 0, 0, .08) 100%),
+    url('../images/flap-left.jpg');
   background-size: cover;
   background-position: center;
 
@@ -179,13 +177,15 @@ body::after {
   will-change: transform;
   transform-origin: right center;
 
-  /* Mirrors the left flap image — offset so it tiles naturally.
-     Change background-position if you want a different crop.   */
+  /* ─── REPLACE WITH YOUR RIGHT FLAP IMAGE ────────────────
+     Drop your file into images/ and update the filename below.
+     Supported: .jpg  .jpeg  .png  .webp
+  ──────────────────────────────────────────────────────── */
   background-image:
     linear-gradient(160deg, rgba(0, 0, 0, .10) 0%, rgba(255, 252, 248, .10) 100%),
-    url('../images/envelope-cover.jpg');
+    url('../images/flap-right.jpg');
   background-size: cover;
-  background-position: right center;
+  background-position: center;
 }
 /* Shadow cast by left flap overlap */
 #flap-right::before {
