@@ -139,7 +139,7 @@ body::after {
   ──────────────────────────────────────────────────────── */
   background-image:
     linear-gradient(160deg, rgba(255, 252, 248, .15) 0%, rgba(0, 0, 0, .08) 100%),
-    url('../images/flap-left.jpg');
+    url('../images/background.png');
   background-size: cover;
   background-position: center;
 
@@ -183,7 +183,7 @@ body::after {
   ──────────────────────────────────────────────────────── */
   background-image:
     linear-gradient(160deg, rgba(0, 0, 0, .10) 0%, rgba(255, 252, 248, .10) 100%),
-    url('../images/flap-right.jpg');
+    url('../images/background.png');
   background-size: cover;
   background-position: center;
 }
