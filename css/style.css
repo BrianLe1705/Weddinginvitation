@@ -300,7 +300,7 @@ body::after {
 /* ─── WAX SEAL ───────────────────────────────────────── */
 #wax-seal {
   position: absolute;
-  right: clamp(-120px, -16vw, -96px);
+  right: clamp(-160px, -14vw, -110px);
   top: 50%;
   transform: translateY(-50%);
   width:  clamp(220px, 28vw, 320px);
