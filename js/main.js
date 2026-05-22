@@ -17,13 +17,17 @@ const musicBtn  = document.getElementById('music-btn');
 const icOn      = document.getElementById('ic-on');
 const icOff     = document.getElementById('ic-off');
 
-/* ─── LOADER ─────────────────────────────────────────── */
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    loader.classList.add('out');
-    setTimeout(() => loader.remove(), 900);
-  }, 1000);
-});
+
+/* ─── SPLASH LOADER ──────────────────────────────────── */
+document.body.style.overflow = 'hidden';
+
+loader.addEventListener('click', e => {
+  e.stopPropagation();
+  document.body.style.overflow = '';
+  loader.classList.add('out');
+  setTimeout(() => loader.remove(), 950);
+  initAudio();
+}, { once: true });
 
 /* ─── IDLE FLOAT ─────────────────────────────────────── */
 /* Subtle breathing motion before the user scrolls       */
@@ -163,7 +167,7 @@ function fadeIn() {
       gsap.to(audio, { volume: .65, duration: 3, ease: 'power1.out' });
     })
     .catch(() => {
-      /* Autoplay blocked by browser — silently ignore */
+      audioReady = false; // reset so the next interaction can retry
     });
 }
 
@@ -186,15 +190,18 @@ function initAudio() {
   }
 }
 
-/* Trigger on first scroll or touch (mobile autoplay policy) */
+/* Try on scroll — works if browser allows it */
 window.addEventListener('scroll',     () => initAudio(), { once: true });
+/* First touch or click anywhere guarantees autoplay policy is satisfied */
 window.addEventListener('touchstart', () => initAudio(), { once: true, passive: true });
+document.addEventListener('click',    () => initAudio(), { once: true });
 
-/* Manual toggle */
-musicBtn.addEventListener('click', () => {
-  if (!audioReady) { audioReady = true; fadeIn();  }
+/* Manual toggle — stopPropagation prevents the document click above from double-firing */
+musicBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  if (!audioReady) { audioReady = true; fadeIn(); }
   else if (playing) { fadeOut(); }
-  else              { fadeIn();  }
+  else              { fadeIn(); }
 });
 
 /* ─── RSVP FORM ──────────────────────────────────────── */

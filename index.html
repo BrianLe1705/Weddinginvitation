@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>Save The Date · [Name] &amp; [Name]</title>
+  <title>Save The Date · Cathy &amp; Brian</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,8 +27,20 @@
 <canvas id="particles"></canvas>
 
 <!-- ── LOADER ─────────────────────────────────────────── -->
+
+<!-- ── SPLASH LOADER ──────────────────────────────────── -->
 <div id="loader">
-  <span class="loader-word">preparing your invitation…</span>
+  <div class="loader-inner">
+    <p class="loader-title">You have an invitation</p>
+    <div class="loader-orn">
+      <span></span>
+      <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 0l1.6 5.4L16 8l-6.4 1.6L8 16l-1.6-6.4L0 8l6.4-1.6z"/>
+      </svg>
+      <span></span>
+    </div>
+    <p class="loader-tap">tap to open</p>
+  </div>
 </div>
 
 <!-- ── MUSIC TOGGLE ───────────────────────────────────── -->
@@ -48,8 +60,8 @@
 
 <!-- ── AUDIO ──────────────────────────────────────────── -->
 <!-- REPLACE src WITH YOUR MUSIC FILE PATH OR URL        -->
-<audio id="wedding-audio" loop preload="none">
-  <source src="YOUR_MUSIC_FILE.mp3" type="audio/mpeg">
+<audio id="wedding-audio" loop preload="auto">
+  <source src="music/I do.mp3" type="audio/mpeg">
 </audio>
 
 <!-- ════════════════════════════════════════════════════
@@ -90,44 +102,6 @@
       <!-- LEFT FLAP (dominant) -->
       <div id="flap-left">
 
-        <!-- Floral corner — top left -->
-        <svg class="fcorner tl" viewBox="0 0 120 120"
-             xmlns="http://www.w3.org/2000/svg" fill="none">
-          <g stroke="#8B6E4A" stroke-width=".7">
-            <path d="M12,108 Q32,78 54,48 Q72,24 94,10"/>
-            <path d="M26,94 Q10,74 22,60"/>
-            <path d="M26,94 Q42,80 36,64"/>
-            <path d="M48,64 Q30,46 40,34"/>
-            <path d="M48,64 Q64,50 58,36"/>
-            <circle cx="88" cy="14" r="4.5" stroke-width=".65"/>
-            <circle cx="88" cy="14" r="1.8" fill="#8B6E4A" opacity=".42"/>
-            <circle cx="98" cy="26" r="3"   stroke-width=".6"/>
-            <circle cx="78" cy="24" r="3"   stroke-width=".6"/>
-            <circle cx="20" cy="98" r="2.2" fill="#8B6E4A" opacity=".35"/>
-            <circle cx="58" cy="40" r="1.6" fill="#8B6E4A" opacity=".32"/>
-            <circle cx="36" cy="28" r="2"   fill="#8B6E4A" opacity=".28"/>
-          </g>
-        </svg>
-
-        <!-- Floral corner — bottom left (mirrored) -->
-        <svg class="fcorner bl" viewBox="0 0 120 120"
-             xmlns="http://www.w3.org/2000/svg" fill="none">
-          <g stroke="#8B6E4A" stroke-width=".7">
-            <path d="M12,108 Q32,78 54,48 Q72,24 94,10"/>
-            <path d="M26,94 Q10,74 22,60"/>
-            <path d="M26,94 Q42,80 36,64"/>
-            <path d="M48,64 Q30,46 40,34"/>
-            <path d="M48,64 Q64,50 58,36"/>
-            <circle cx="88" cy="14" r="4.5" stroke-width=".65"/>
-            <circle cx="88" cy="14" r="1.8" fill="#8B6E4A" opacity=".42"/>
-            <circle cx="98" cy="26" r="3"   stroke-width=".6"/>
-            <circle cx="78" cy="24" r="3"   stroke-width=".6"/>
-            <circle cx="20" cy="98" r="2.2" fill="#8B6E4A" opacity=".35"/>
-            <circle cx="58" cy="40" r="1.6" fill="#8B6E4A" opacity=".32"/>
-            <circle cx="36" cy="28" r="2"   fill="#8B6E4A" opacity=".28"/>
-          </g>
-        </svg>
-
         <!-- Typography content -->
         <div id="flap-content">
           <p class="fc-label">You are cordially invited</p>
@@ -142,8 +116,8 @@
             <span></span>
           </div>
 
-          <p class="fc-names">[Name] &amp; [Name]</p>
-          <p class="fc-date">[Day] &middot; [Month] &middot; [Year]</p>
+          <p class="fc-names">Cathy &amp; Brian</p>
+          <p class="fc-date">17 &middot; December &middot; 2026</p>
         </div>
 
         <!-- Wax seal — child of left flap, travels with it during animation -->
@@ -172,12 +146,12 @@
   <section id="sec-couple">
     <p class="eyebrow fu">We joyfully announce</p>
     <div class="couple-names fu">
-      <span>[Name]</span>
+      <span>Cathy</span>
       <span class="ampersand">&amp;</span>
-      <span>[Name]</span>
+      <span>Brian</span>
     </div>
-    <p class="wedding-date fu">[Day of Week] &middot; [Date] &middot; [Year]</p>
-    <p class="wedding-location fu">[City], [Country]</p>
+    <p class="wedding-date fu">Thursday &middot; December 17 &middot; 2026</p>
+    <p class="wedding-location fu">Hanoi City, Viet Nam</p>
   </section>
 
   <!-- Ornament divider -->
@@ -197,8 +171,8 @@
       <div class="d-card fu">
         <div class="d-icon">◇</div>
         <div class="d-label">Date</div>
-        <div class="d-value">[Month] [Day]<br>[Year]</div>
-        <div class="d-sub">[Day of Week]</div>
+        <div class="d-value">December 17<br>2026</div>
+        <div class="d-sub">Thursday</div>
       </div>
 
       <div class="d-card fu">
@@ -357,9 +331,10 @@
 
   <!-- ── Footer ──────────────────────────────────────── -->
   <footer>
-    <div class="ft-mono">[N] &amp; [N]</div>
-    <p class="ft-text">[Date] &middot; [Venue] &middot; [City]</p>
+    <div class="ft-mono">C &amp; B</div>
+    <p class="ft-text">December 17, 2026 &middot; [Venue] &middot; Hanoi City</p>
     <p class="ft-text ft-made">Made with love</p>
+    <p class="ft-text ft-credit">Music: "I Do" — <a href="https://www.youtube.com/watch?v=d1yHx9bTeHU" target="_blank" rel="noopener">view original</a></p>
   </footer>
 
 </div><!-- /content -->
