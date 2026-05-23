@@ -205,9 +205,35 @@ musicBtn.addEventListener('click', e => {
 });
 
 /* ─── RSVP FORM ──────────────────────────────────────── */
-document.getElementById('rsvp-form').addEventListener('submit', e => {
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyFdjJJMLH9QJ3kpZImV1kXV92kK8580Wkwai2toxAQyRM8sh_ePHid5qZiTXMBANgC-Q/exec'; // ← paste your deployed Apps Script URL here
+
+document.getElementById('rsvp-form').addEventListener('submit', async e => {
   e.preventDefault();
-  const btn = e.target.querySelector('.btn-rsvp');
-  btn.textContent = 'Thank you ♡';
+  const form = e.target;
+  const btn  = form.querySelector('.btn-rsvp');
+
+  btn.textContent = 'Sending…';
   btn.disabled = true;
+
+  const data = {
+    name:       form.name.value.trim(),
+    email:      form.email.value.trim(),
+    attendance: form.attendance.value,
+    guests:     form.guests.value,
+    dietary:    form.dietary.value.trim(),
+  };
+
+  try {
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode:   'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body:   JSON.stringify(data),
+    });
+    btn.textContent = 'Thank you ♡';
+  } catch (err) {
+    btn.textContent = 'Send RSVP';
+    btn.disabled = false;
+    alert('Something went wrong. Please try again.');
+  }
 });

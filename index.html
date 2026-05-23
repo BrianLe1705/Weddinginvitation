@@ -31,6 +31,7 @@
 <!-- ── SPLASH LOADER ──────────────────────────────────── -->
 <div id="loader">
   <div class="loader-inner">
+    <p class="loader-thu-moi">Thư mời</p>
     <p class="loader-title">You have an invitation</p>
     <div class="loader-orn">
       <span></span>
@@ -104,9 +105,8 @@
 
         <!-- Typography content -->
         <div id="flap-content">
-          <p class="fc-label">You are cordially invited</p>
 
-          <h1 class="fc-main">Save<br>The<br>Date</h1>
+          <h1 class="fc-main">Save<br><span class="fc-the">the</span><br>Date</h1>
 
           <div class="fc-orn">
             <span></span>
@@ -154,6 +154,36 @@
     <p class="wedding-location fu">Hanoi City, Viet Nam</p>
   </section>
 
+  <!-- ── Family Introduction ───────────────────────────── -->
+  <section id="sec-family">
+
+    <!-- Row 1: Two-column family names -->
+    <div class="family-grid">
+      <div class="family-side fu">
+        <p class="family-role">Bride's Family</p>
+        <p class="family-name">Mr. Chu Dinh Luong</p>
+        <p class="family-name">Mrs. Nguyen Thi Huong Giang</p>
+      </div>
+      <div class="family-vline"></div>
+      <div class="family-side fu">
+        <p class="family-role">Groom's Family</p>
+        <p class="family-name">Mr. Le Van Sinh</p>
+        <p class="family-name">Mrs. Nguyen Thi Huong</p>
+      </div>
+    </div>
+
+    <!-- Row 2: Welcome message -->
+    <p class="family-message fu">Together with our families, we sincerely invite you to join us in celebrating our wedding ceremony and to share in the joy of this special occasion.</p>
+
+    <!-- Row 3: Couple's names -->
+    <div class="family-couple fu">
+      <span class="family-groom">Brian Le</span>
+      <span class="family-amp">&amp;</span>
+      <span class="family-bride">Cathy Chu</span>
+    </div>
+
+  </section>
+
   <!-- Ornament divider -->
   <div class="orn-divider">
     <svg width="190" height="18" viewBox="0 0 190 18" xmlns="http://www.w3.org/2000/svg">
@@ -165,7 +195,7 @@
 
   <!-- ── Wedding Details ─────────────────────────────── -->
   <section id="sec-details">
-    <h2 class="sec-title fu">The Details</h2>
+    <h2 class="sec-title fu">The Wedding Details</h2>
     <div class="details-grid">
 
       <div class="d-card fu">
@@ -177,16 +207,10 @@
 
       <div class="d-card fu">
         <div class="d-icon">◇</div>
-        <div class="d-label">Ceremony</div>
-        <div class="d-value">[Ceremony Venue]</div>
-        <div class="d-sub">[Address] &middot; [Time]</div>
-      </div>
-
-      <div class="d-card fu">
-        <div class="d-icon">◇</div>
-        <div class="d-label">Reception</div>
-        <div class="d-value">[Reception Venue]</div>
-        <div class="d-sub">[Address] &middot; [Time]</div>
+        <div class="d-label">Ceremony Venue</div>
+        <div class="d-value">Long Vi Palace</div>
+        <div class="d-sub">3A Dao Duy Anh st, Kim Lien, Hanoi &middot; 12:00 PM</div>
+        <a class="d-map-btn" href="https://maps.app.goo.gl/1uK31dvxwwPG157P9?g_st=ic" target="_blank" rel="noopener">Open in Maps</a>
       </div>
 
       <div class="d-card fu">
@@ -201,7 +225,7 @@
 
   <!-- ── Day-of Timeline ────────────────────────────── -->
   <section id="sec-timeline">
-    <h2 class="sec-title fu">Day of Love</h2>
+    <h2 class="sec-title fu">Wedding Schedule</h2>
     <div class="timeline">
 
       <div class="tl-item fu">
@@ -233,27 +257,6 @@
         <div class="tl-dot"></div>
         <div class="tl-empty"></div>
       </div>
-
-      <div class="tl-item fu">
-        <div class="tl-empty"></div>
-        <div class="tl-dot"></div>
-        <div class="tl-content">
-          <div class="tl-time">7:30 PM</div>
-          <div class="tl-ev">Dinner &amp; Toasts</div>
-          <div class="tl-place">Grand Ballroom</div>
-        </div>
-      </div>
-
-      <div class="tl-item fu">
-        <div class="tl-content">
-          <div class="tl-time">9:00 PM</div>
-          <div class="tl-ev">First Dance</div>
-          <div class="tl-place">&amp; Dancing Until Midnight</div>
-        </div>
-        <div class="tl-dot"></div>
-        <div class="tl-empty"></div>
-      </div>
-
     </div>
   </section>
 
@@ -286,7 +289,7 @@
 
   <!-- ── RSVP ────────────────────────────────────────── -->
   <section id="sec-rsvp">
-    <p class="eyebrow fu">Kindly Reply By [Date]</p>
+    <p class="eyebrow fu">Kindly Reply At your convenience</p>
     <h2 class="sec-title fu">Will You Join Us?</h2>
     <form class="rsvp-form" id="rsvp-form">
 
@@ -311,10 +314,7 @@
 
       <div class="fg fu">
         <label>Number of Guests</label>
-        <select name="guests">
-          <option value="1">1 guest</option>
-          <option value="2">2 guests</option>
-        </select>
+        <input type="number" name="guests" min="1" max="20" value="1" placeholder="Enter number of guests">
       </div>
 
       <div class="fg fu">
@@ -332,9 +332,10 @@
   <!-- ── Footer ──────────────────────────────────────── -->
   <footer>
     <div class="ft-mono">C &amp; B</div>
-    <p class="ft-text">December 17, 2026 &middot; [Venue] &middot; Hanoi City</p>
+    <p class="ft-text">December 17, 2026 &middot; Hanoi City</p>
     <p class="ft-text ft-made">Made with love</p>
     <p class="ft-text ft-credit">Music: "I Do" — <a href="https://www.youtube.com/watch?v=d1yHx9bTeHU" target="_blank" rel="noopener">view original</a></p>
+    <p class="ft-text ft-copyright">&copy; 2026 Brian Gia Hung Le. All rights reserved.</p>
   </footer>
 
 </div><!-- /content -->

@@ -3,6 +3,18 @@
    Palette: ivory / champagne / warm cream
 ═══════════════════════════════════════════════════════ */
 
+/* ─── CUSTOM FONTS ───────────────────────────────────── */
+@font-face {
+  font-family: 'Madelyn';
+  src: url('../fonts/Madelyn.woff2') format('woff2'),
+       url('../fonts/Madelyn.woff')  format('woff'),
+       url('../fonts/Madelyn.ttf')   format('truetype'),
+       url('../fonts/Madelyn.otf')   format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ─── RESET & VARIABLES ─────────────────────────────── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -62,6 +74,19 @@ body::after {
   text-align: center;
   user-select: none;
   padding: 40px;
+}
+.loader-thu-moi {
+  font-family: 'Madelyn', 'Great Vibes', cursive;
+  font-weight: normal;
+  font-style: normal;
+  font-size: clamp(52px, 10vw, 88px);
+  color: #8B6B38;
+  letter-spacing: .06em;
+  text-align: center;
+  margin-bottom: 14px;
+  text-shadow:
+     1px  1px 0 rgba(255, 252, 248, .70),
+    -1px -1px 0 rgba(44, 31, 14, .08);
 }
 .loader-title {
   font-family: 'Montserrat', sans-serif;
@@ -262,17 +287,21 @@ body::after {
   opacity: .85;
 }
 .fc-main {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-style: italic;
+  font-family: 'Madelyn', 'Great Vibes', cursive;
+  font-weight: normal;
+  font-style: normal;
   font-size: clamp(44px, 7.5vw, 88px);
-  color: var(--dark);
+  color: #8B6B38;
   line-height: .95;
   text-align: center;
   letter-spacing: .02em;
   text-shadow:
      1px  1px 0 rgba(255, 252, 248, .85),
     -1px -1px 0 rgba(44, 31, 14, .10);
+}
+.fc-the {
+  font-size: .82em;
+  opacity: .72;
 }
 .fc-orn {
   display: flex;
@@ -304,8 +333,8 @@ body::after {
 .fc-date {
   font-family: 'Montserrat', sans-serif;
   font-weight: 200;
-  font-size: clamp(10px, 1.6vw, 16px);
-  letter-spacing: .42em;
+  font-size: clamp(7px, 1.1vw, 13px);
+  letter-spacing: .32em;
   color: var(--warm);
   text-transform: uppercase;
   margin-top: 14px;
@@ -367,8 +396,8 @@ body::after {
 #scroll-cue p {
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
-  font-size: 15px;
-  letter-spacing: .48em;
+  font-size: 10px;
+  letter-spacing: .38em;
   color: var(--warm);
   text-transform: uppercase;
   opacity: .85;
@@ -431,7 +460,7 @@ body::after {
 
 /* ─── COUPLE NAMES SECTION ───────────────────────────── */
 #sec-couple {
-  background: var(--cream);
+  background: rgba(255, 248, 240, 0.7);
   text-align: center;
   padding: clamp(80px, 12vw, 140px) clamp(20px, 5vw, 60px);
 }
@@ -446,17 +475,17 @@ body::after {
 }
 .couple-names {
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(56px, 11vw, 132px);
-  color: var(--dark);
+  font-size: clamp(40px, 8vw, 96px);
+  color: #8B6B38;
   line-height: 1.05;
 }
 .ampersand {
   display: block;
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-size: clamp(28px, 4.5vw, 54px);
+  font-size: clamp(48px, 8vw, 90px);
   color: var(--champ);
-  margin: -8px 0;
+  margin: -4px 0;
 }
 .wedding-date {
   font-family: 'Cormorant Garamond', serif;
@@ -474,6 +503,81 @@ body::after {
   color: var(--warm);
   margin-top: 10px;
   opacity: .65;
+}
+
+/* ─── FAMILY SECTION ────────────────────────────────── */
+#sec-family {
+  background: var(--cream);
+  text-align: center;
+  padding: clamp(56px, 9vw, 110px) clamp(20px, 5vw, 60px);
+}
+.family-grid {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 680px;
+  margin: 0 auto clamp(40px, 6vw, 64px);
+}
+.family-side {
+  flex: 1;
+  padding: 0 clamp(18px, 4vw, 44px);
+}
+.family-vline {
+  width: 1px;
+  min-height: 90px;
+  align-self: stretch;
+  background: linear-gradient(to bottom, transparent, var(--champ) 30%, var(--champ) 70%, transparent);
+  opacity: .35;
+  flex-shrink: 0;
+}
+.family-role {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: clamp(10px, 1.4vw, 13px);
+  letter-spacing: .28em;
+  color: var(--champ);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.family-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(14px, 1.9vw, 20px);
+  color: var(--dark);
+  line-height: 1.75;
+}
+.family-message {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(15px, 2vw, 21px);
+  color: var(--warm);
+  line-height: 1.9;
+  max-width: 600px;
+  margin: 0 auto clamp(36px, 5vw, 58px);
+  opacity: .88;
+}
+.family-couple {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+.family-groom,
+.family-bride {
+  font-family: 'Madelyn', 'Great Vibes', cursive;
+  font-size: clamp(44px, 8vw, 78px);
+  color: #8B6B38;
+  line-height: 1.1;
+}
+.family-amp {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(28px, 4.5vw, 50px);
+  color: var(--champ);
+  margin: 0 clamp(10px, 2vw, 20px);
+  line-height: 1;
 }
 
 /* ─── ORNAMENT DIVIDER ───────────────────────────────── */
@@ -536,18 +640,39 @@ body::after {
 }
 .d-value {
   font-family: 'Cormorant Garamond', serif;
-  font-weight: 400;
-  font-size: clamp(17px, 2.4vw, 23px);
+  font-weight: 600;
+  font-size: clamp(20px, 2.8vw, 27px);
   color: var(--dark);
   line-height: 1.4;
 }
 .d-sub {
   font-family: 'Montserrat', sans-serif;
-  font-weight: 300;
-  font-size: 10px;
+  font-weight: 400;
+  font-size: 11px;
   color: var(--warm);
   margin-top: 8px;
-  opacity: .65;
+  opacity: .75;
+}
+.d-map-btn {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 9px 22px;
+  border: 1px solid var(--champ);
+  border-radius: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 9px;
+  letter-spacing: .42em;
+  text-transform: uppercase;
+  color: var(--dark);
+  text-decoration: none;
+  transition: background .3s, color .3s;
+  -webkit-tap-highlight-color: transparent;
+}
+.d-map-btn:hover,
+.d-map-btn:active {
+  background: var(--champ);
+  color: var(--cream);
 }
 
 /* ─── TIMELINE SECTION ───────────────────────────────── */
@@ -720,14 +845,15 @@ footer {
 }
 .ft-text {
   font-family: 'Montserrat', sans-serif;
-  font-weight: 200;
-  font-size: 9px;
-  letter-spacing: .45em;
-  color: rgba(249, 243, 232, .38);
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: .38em;
+  color: rgba(249, 243, 232, .75);
   text-transform: uppercase;
 }
-.ft-made { margin-top: 14px; opacity: .18; }
-.ft-credit { margin-top: 10px; opacity: .22; }
+.ft-made { margin-top: 14px; opacity: .55; }
+.ft-credit { margin-top: 10px; opacity: .65; }
+.ft-copyright { margin-top: 24px; opacity: .45; }
 .ft-credit a { color: var(--champ); text-decoration: none; border-bottom: 1px solid rgba(201,169,110,.3); }
 .ft-credit a:hover { opacity: .7; }
 
