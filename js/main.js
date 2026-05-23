@@ -215,22 +215,23 @@ document.getElementById('rsvp-form').addEventListener('submit', async e => {
   btn.textContent = 'Sending…';
   btn.disabled = true;
 
-  const els = form.elements;
-  const data = {
-    name:       els['name'].value.trim(),
-    email:      els['email'].value.trim(),
-    phone:      els['phone'].value.trim(),
-    attendance: els['attendance'].value,
-    guests:     els['guests'].value,
-    dietary:    els['dietary'].value.trim(),
-  };
+  const get = name => (form.querySelector(`[name="${name}"]`)?.value || '').trim();
+
+  const params = new URLSearchParams({
+    name:       get('name'),
+    email:      get('email'),
+    phone:      get('phone'),
+    attendance: get('attendance'),
+    guests:     get('guests'),
+    dietary:    get('dietary'),
+  });
 
   try {
     await fetch(SCRIPT_URL, {
       method:  'POST',
       mode:    'no-cors',
-      headers: { 'Content-Type': 'text/plain' }, // text/plain is allowed in no-cors; Apps Script reads body as JSON string
-      body:    JSON.stringify(data),
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body:    params.toString(),
     });
     btn.textContent = 'Thank you ♡';
   } catch (err) {
