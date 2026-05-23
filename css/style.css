@@ -547,7 +547,7 @@ body::after {
 }
 
 #sec-details {
-  background: #F2EAD8;
+  background: rgba(242, 234, 216, 0.7);
   padding: clamp(70px, 10vw, 120px) clamp(20px, 5vw, 60px);
 }
 .sec-title {
