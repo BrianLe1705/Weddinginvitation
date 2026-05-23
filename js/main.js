@@ -215,23 +215,22 @@ document.getElementById('rsvp-form').addEventListener('submit', async e => {
   btn.textContent = 'Sending…';
   btn.disabled = true;
 
-  const get = name => (form.querySelector(`[name="${name}"]`)?.value || '').trim();
-
-  const params = new URLSearchParams({
-    name:       get('name'),
-    email:      get('email'),
-    phone:      get('phone'),
-    attendance: get('attendance'),
-    guests:     get('guests'),
-    dietary:    get('dietary'),
-  });
+  const els = form.elements;
+  const data = {
+    name:       els['name'].value.trim(),
+    email:      els['email'].value.trim(),
+    phone:      els['phone'].value.trim(),
+    attendance: els['attendance'].value,
+    guests:     els['guests'].value,
+    dietary:    els['dietary'].value.trim(),
+  };
 
   try {
     await fetch(SCRIPT_URL, {
-      method:  'POST',
-      mode:    'no-cors',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body:    params.toString(),
+      method: 'POST',
+      mode:   'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body:   JSON.stringify(data),
     });
     btn.textContent = 'Thank you ♡';
   } catch (err) {
