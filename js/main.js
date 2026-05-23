@@ -218,6 +218,7 @@ document.getElementById('rsvp-form').addEventListener('submit', async e => {
   const data = {
     name:       form.name.value.trim(),
     email:      form.email.value.trim(),
+    phone:      form.phone.value.trim(),
     attendance: form.attendance.value,
     guests:     form.guests.value,
     dietary:    form.dietary.value.trim(),
