@@ -1,9 +1,3 @@
-/* ═══════════════════════════════════════════════════════
-   WEDDING INVITATION — style.css
-   Palette: ivory / champagne / warm cream
-═══════════════════════════════════════════════════════ */
-
-/* ─── CUSTOM FONTS ───────────────────────────────────── */
 @font-face {
   font-family: 'Madelyn';
   src: url('../fonts/Madelyn.woff2') format('woff2'),
@@ -15,7 +9,6 @@
   font-display: swap;
 }
 
-/* ─── RESET & VARIABLES ─────────────────────────────── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
@@ -43,7 +36,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Ambient film-grain overlay on every page */
 body::after {
   content: '';
   position: fixed;
@@ -54,7 +46,6 @@ body::after {
   opacity: .022;
 }
 
-/* ─── SPLASH LOADER ──────────────────────────────────── */
 #loader {
   position: fixed;
   inset: 0;
@@ -128,8 +119,6 @@ body::after {
   50%       { opacity: .85; }
 }
 
-/* ─── FIXED BACKGROUND PHOTO ─────────────────────────── */
-/* Stays pinned to viewport; content sections scroll over it */
 #couple-bg {
   position: fixed;
   inset: 0;
@@ -139,8 +128,6 @@ body::after {
   opacity: 0;
   will-change: opacity;
 }
-
-/* Cinematic vignette — dark edges, light center */
 #couple-bg::after {
   content: '';
   position: absolute;
@@ -148,7 +135,6 @@ body::after {
   background: radial-gradient(ellipse at 50% 45%, transparent 32%, rgba(12, 6, 2, .58) 100%);
 }
 
-/* ─── FLOATING DUST PARTICLES ────────────────────────── */
 #particles {
   position: fixed;
   inset: 0;
@@ -156,7 +142,6 @@ body::after {
   pointer-events: none;
 }
 
-/* ─── HERO ───────────────────────────────────────────── */
 #hero {
   height: 320vh;
   position: relative;
@@ -169,7 +154,6 @@ body::after {
   z-index: 3;
 }
 
-/* ─── ENVELOPE ───────────────────────────────────────── */
 #envelope {
   position: absolute;
   inset: 0;
@@ -177,11 +161,6 @@ body::after {
   will-change: transform;
 }
 
-
-/* Paper noise data-URI used on both flaps */
-/* (keep this comment so you can find it easily) */
-
-/* LEFT FLAP — wider, dominant, z-index 2 */
 #flap-left {
   position: absolute;
   left: 0; top: 0;
@@ -189,23 +168,16 @@ body::after {
   z-index: 2;
   will-change: transform;
   transform-origin: left center;
-
-  /* ─── REPLACE WITH YOUR LEFT FLAP IMAGE ─────────────────
-     Drop your file into images/ and update the filename below.
-     Supported: .jpg  .jpeg  .png  .webp
-  ──────────────────────────────────────────────────────── */
   background-image:
     linear-gradient(160deg, rgba(255, 252, 248, .15) 0%, rgba(0, 0, 0, .08) 100%),
     url('../images/background.png');
   background-size: cover;
   background-position: center;
-
   box-shadow:
     8px 0 28px rgba(44, 31, 14, .20),
     inset 3px 0 10px rgba(255, 252, 245, .55),
     inset -5px 0 14px rgba(44, 31, 14, .07);
 }
-/* Directional light — upper-left highlight */
 #flap-left::before {
   content: '';
   position: absolute;
@@ -215,7 +187,6 @@ body::after {
     radial-gradient(ellipse at 18% 18%, rgba(255, 252, 248, .42) 0%, transparent 60%),
     linear-gradient(to bottom, transparent 60%, rgba(44, 31, 14, .05) 100%);
 }
-/* Right-edge fold tension shadow */
 #flap-left::after {
   content: '';
   position: absolute;
@@ -225,7 +196,6 @@ body::after {
   pointer-events: none;
 }
 
-/* RIGHT FLAP — narrower, tucked under, z-index 1 */
 #flap-right {
   position: absolute;
   right: 0; top: 0;
@@ -233,18 +203,12 @@ body::after {
   z-index: 1;
   will-change: transform;
   transform-origin: right center;
-
-  /* ─── REPLACE WITH YOUR RIGHT FLAP IMAGE ────────────────
-     Drop your file into images/ and update the filename below.
-     Supported: .jpg  .jpeg  .png  .webp
-  ──────────────────────────────────────────────────────── */
   background-image:
     linear-gradient(160deg, rgba(0, 0, 0, .10) 0%, rgba(255, 252, 248, .10) 100%),
     url('../images/background.png');
   background-size: cover;
   background-position: center;
 }
-/* Shadow cast by left flap overlap */
 #flap-right::before {
   content: '';
   position: absolute;
@@ -254,7 +218,6 @@ body::after {
   pointer-events: none;
 }
 
-/* ─── RIGHT FLAP WATERMARK ───────────────────────────── */
 #flap-wm {
   position: absolute;
   inset: 0;
@@ -264,7 +227,6 @@ body::after {
   opacity: .055;
 }
 
-/* ─── LEFT FLAP CONTENT ──────────────────────────────── */
 #flap-content {
   position: absolute;
   inset: 0;
@@ -341,7 +303,6 @@ body::after {
   opacity: .9;
 }
 
-/* Floral corner SVG positioning */
 .fcorner {
   position: absolute;
   opacity: .42;
@@ -358,7 +319,6 @@ body::after {
   transform: scaleY(-1);
 }
 
-/* ─── WAX SEAL ───────────────────────────────────────── */
 #wax-seal {
   position: absolute;
   right: clamp(-160px, -14vw, -110px);
@@ -380,7 +340,6 @@ body::after {
   50%       { filter: drop-shadow(0 6px 28px rgba(201, 169, 110, .80)); }
 }
 
-/* ─── SCROLL CUE ─────────────────────────────────────── */
 #scroll-cue {
   position: absolute;
   bottom: 28px;
@@ -413,7 +372,6 @@ body::after {
   50%       { opacity: .8;  transform: scaleY(1);  }
 }
 
-/* ─── MUSIC TOGGLE ───────────────────────────────────── */
 #music-btn {
   position: fixed;
   bottom: clamp(18px, 3vw, 30px);
@@ -454,15 +412,18 @@ body::after {
   50%       { opacity: .55; }
 }
 
-/* ─── CONTENT WRAPPER ────────────────────────────────── */
-/* z-index 4 keeps it above the fixed photo (0) and particles (2) */
 #content { position: relative; z-index: 4; }
 
-/* ─── COUPLE NAMES SECTION ───────────────────────────── */
 #sec-couple {
-  background: rgba(255, 248, 240, 0.7);
+  background: rgba(255, 248, 240, 0.8);
   text-align: center;
   padding: clamp(80px, 12vw, 140px) clamp(20px, 5vw, 60px);
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .eyebrow {
   font-family: 'Montserrat', sans-serif;
@@ -505,7 +466,6 @@ body::after {
   opacity: .65;
 }
 
-/* ─── FAMILY SECTION ────────────────────────────────── */
 #sec-family {
   background: var(--cream);
   text-align: center;
@@ -580,14 +540,12 @@ body::after {
   line-height: 1;
 }
 
-/* ─── ORNAMENT DIVIDER ───────────────────────────────── */
 .orn-divider {
   text-align: center;
   padding: 10px 0;
   background: var(--cream);
 }
 
-/* ─── DETAILS SECTION ────────────────────────────────── */
 #sec-details {
   background: #F2EAD8;
   padding: clamp(70px, 10vw, 120px) clamp(20px, 5vw, 60px);
@@ -675,7 +633,6 @@ body::after {
   color: var(--cream);
 }
 
-/* ─── TIMELINE SECTION ───────────────────────────────── */
 #sec-timeline {
   background: var(--cream);
   padding: clamp(70px, 10vw, 120px) clamp(20px, 5vw, 60px);
@@ -741,35 +698,113 @@ body::after {
   margin-top: 3px;
 }
 
-/* ─── GALLERY SECTION ────────────────────────────────── */
 #sec-gallery {
-  background: #F2EAD8;
+  background: rgba(242, 234, 216, 0.7);
   padding: clamp(70px, 10vw, 120px) clamp(20px, 5vw, 60px);
 }
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: auto;
-  gap: 10px;
-  max-width: 1140px;
+.gallery-carousel {
+  max-width: 860px;
   margin: 0 auto;
 }
-.g-item { overflow: hidden; }
-.g-item img {
+.gc-main {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.gc-display {
+  flex: 1;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  position: relative;
+  perspective: 1400px;
+}
+.gc-img {
+  position: absolute;
+  inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform .65s ease, filter .65s ease;
-  filter: sepia(14%) saturate(.88);
+  filter: sepia(10%) saturate(.9);
+  backface-visibility: hidden;
+  will-change: transform;
 }
-.g-item:hover img { transform: scale(1.04); filter: sepia(0%) saturate(1); }
-.g-item:nth-child(1) { grid-column: 1 / 6;  aspect-ratio: 3 / 4; }
-.g-item:nth-child(2) { grid-column: 6 / 9;  aspect-ratio: 3 / 2; }
-.g-item:nth-child(3) { grid-column: 9 / 13; aspect-ratio: 3 / 2; }
-.g-item:nth-child(4) { grid-column: 6 / 10; aspect-ratio: 4 / 3; }
-.g-item:nth-child(5) { grid-column: 10 / 13;aspect-ratio: 3 / 2; }
+@keyframes flipOutLeft {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(-90deg); }
+}
+@keyframes flipInRight {
+  from { transform: rotateY(90deg); }
+  to   { transform: rotateY(0deg); }
+}
+@keyframes flipOutRight {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(90deg); }
+}
+@keyframes flipInLeft {
+  from { transform: rotateY(-90deg); }
+  to   { transform: rotateY(0deg); }
+}
+.gc-img.flip-out-left  { animation: flipOutLeft  .32s ease-in  both;       transform-origin: left center; }
+.gc-img.flip-in-right  { animation: flipInRight  .32s ease-out .32s both;  transform-origin: right center; }
+.gc-img.flip-out-right { animation: flipOutRight .32s ease-in  both;       transform-origin: right center; }
+.gc-img.flip-in-left   { animation: flipInLeft   .32s ease-out .32s both;  transform-origin: left center; }
 
-/* ─── RSVP SECTION ───────────────────────────────────── */
+.gc-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 56px;
+  line-height: 1;
+  width: 56px; height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity .3s, color .3s;
+  text-shadow: 0 2px 12px rgba(0,0,0,.55);
+  -webkit-tap-highlight-color: transparent;
+}
+.gc-prev { left: 8px; }
+.gc-next { right: 8px; }
+.gc-main:hover .gc-arrow { opacity: 1; }
+.gc-arrow:hover,
+.gc-arrow:active { color: var(--champ-l); opacity: 1; }
+@media (hover: none) { .gc-arrow { opacity: .75; } }
+.gc-thumbs {
+  display: flex;
+  gap: 7px;
+  margin-top: 10px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+.gc-thumbs::-webkit-scrollbar { display: none; }
+.gc-thumb {
+  flex-shrink: 0;
+  width: 68px; height: 50px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  opacity: .5;
+  transition: border-color .3s, opacity .3s;
+}
+.gc-thumb.active {
+  border-color: var(--champ);
+  opacity: 1;
+}
+.gc-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 #sec-rsvp {
   background: var(--cream);
   text-align: center;
@@ -831,7 +866,6 @@ body::after {
 }
 .btn-rsvp:disabled { cursor: default; }
 
-/* ─── FOOTER ─────────────────────────────────────────── */
 footer {
   background: var(--dark);
   text-align: center;
@@ -857,28 +891,18 @@ footer {
 .ft-credit a { color: var(--champ); text-decoration: none; border-bottom: 1px solid rgba(201,169,110,.3); }
 .ft-credit a:hover { opacity: .7; }
 
-/* ─── FADE-UP ANIMATION HELPER ───────────────────────── */
 .fu {
   opacity: 0;
   transform: translateY(32px);
 }
 
-/* ─── MOBILE BREAKPOINTS ─────────────────────────────── */
 @media (max-width: 768px) {
   .fcorner    { width: clamp(52px, 13vw, 75px); }
   #wax-seal   { width: 176px; height: 176px; right: -88px; }
   #flap-left  { width: 62%; }
   #flap-right { width: 41%; }
-
-  /* Gallery: 2-col stacked */
-  .gallery-grid { grid-template-columns: 1fr 1fr; }
-  .g-item:nth-child(1) { grid-column: 1 / 2; aspect-ratio: 3 / 4; }
-  .g-item:nth-child(2) { grid-column: 2 / 3; aspect-ratio: 2 / 3; }
-  .g-item:nth-child(3) { grid-column: 1 / 2; aspect-ratio: 3 / 2; }
-  .g-item:nth-child(4) { grid-column: 2 / 3; aspect-ratio: 3 / 2; }
-  .g-item:nth-child(5) { grid-column: 1 / 3; aspect-ratio: 16 / 7; }
-
-  /* Timeline: left-rail layout */
+  .gc-thumb { width: 52px; height: 38px; }
+  .gc-arrow { width: 38px; height: 38px; font-size: 24px; }
   .timeline::before { left: 16px; transform: none; }
   .tl-item {
     display: flex;

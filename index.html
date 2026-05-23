@@ -4,31 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>Save The Date · Cathy &amp; Brian</title>
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Montserrat:wght@100;200;300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
-
-  <!-- GSAP (must load before main.js) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 <body>
 
-<!-- ── FIXED BACKGROUND PHOTO ─────────────────────────── -->
 <div id="couple-bg"></div>
-
-<!-- ── FLOATING DUST PARTICLES ────────────────────────── -->
 <canvas id="particles"></canvas>
 
-<!-- ── LOADER ─────────────────────────────────────────── -->
-
-<!-- ── SPLASH LOADER ──────────────────────────────────── -->
 <div id="loader">
   <div class="loader-inner">
     <p class="loader-thu-moi">Thư mời</p>
@@ -44,7 +32,6 @@
   </div>
 </div>
 
-<!-- ── MUSIC TOGGLE ───────────────────────────────────── -->
 <button id="music-btn" aria-label="Toggle music">
   <svg id="ic-on" viewBox="0 0 24 24">
     <path d="M9 18V5l12-2v13"/>
@@ -59,25 +46,16 @@
   </svg>
 </button>
 
-<!-- ── AUDIO ──────────────────────────────────────────── -->
-<!-- REPLACE src WITH YOUR MUSIC FILE PATH OR URL        -->
 <audio id="wedding-audio" loop preload="auto">
   <source src="music/I do.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ════════════════════════════════════════════════════
-     HERO — sticky envelope
-════════════════════════════════════════════════════ -->
 <section id="hero">
   <div id="hero-sticky">
-
-    <!-- Envelope -->
     <div id="envelope">
 
-      <!-- RIGHT FLAP (tucked behind left) -->
       <div id="flap-right">
         <div id="flap-wm">
-          <!-- Soft floral watermark -->
           <svg viewBox="0 0 220 320" width="72%" height="72%"
                xmlns="http://www.w3.org/2000/svg" fill="#7A5C3A">
             <circle cx="110" cy="160" r="56" fill="none" stroke="#7A5C3A" stroke-width=".4"/>
@@ -98,16 +76,11 @@
             <ellipse cx="110" cy="268" rx="6" ry="18" opacity=".18"/>
           </svg>
         </div>
-      </div><!-- /flap-right -->
+      </div>
 
-      <!-- LEFT FLAP (dominant) -->
       <div id="flap-left">
-
-        <!-- Typography content -->
         <div id="flap-content">
-
           <h1 class="fc-main">Save<br><span class="fc-the">the</span><br>Date</h1>
-
           <div class="fc-orn">
             <span></span>
             <svg viewBox="0 0 16 16">
@@ -115,34 +88,26 @@
             </svg>
             <span></span>
           </div>
-
           <p class="fc-names">Cathy &amp; Brian</p>
           <p class="fc-date">17 &middot; December &middot; 2026</p>
         </div>
-
-        <!-- Wax seal — child of left flap, travels with it during animation -->
         <div id="wax-seal">
           <img src="images/letter wax.png" alt="Wax seal">
         </div>
+      </div>
 
-      </div><!-- /flap-left -->
-    </div><!-- /envelope -->
+    </div>
 
-    <!-- Scroll cue -->
     <div id="scroll-cue">
       <p>scroll to open</p>
       <div class="sc-line"></div>
     </div>
 
-  </div><!-- /hero-sticky -->
+  </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════
-     CONTENT
-════════════════════════════════════════════════════ -->
 <div id="content">
 
-  <!-- ── Couple Names ────────────────────────────────── -->
   <section id="sec-couple">
     <p class="eyebrow fu">We joyfully announce</p>
     <div class="couple-names fu">
@@ -154,10 +119,7 @@
     <p class="wedding-location fu">Hanoi City, Viet Nam</p>
   </section>
 
-  <!-- ── Family Introduction ───────────────────────────── -->
   <section id="sec-family">
-
-    <!-- Row 1: Two-column family names -->
     <div class="family-grid">
       <div class="family-side fu">
         <p class="family-role">Bride's Family</p>
@@ -171,20 +133,14 @@
         <p class="family-name">Mrs. Nguyen Thi Huong</p>
       </div>
     </div>
-
-    <!-- Row 2: Welcome message -->
     <p class="family-message fu">Together with our families, we sincerely invite you to join us in celebrating our wedding ceremony and to share in the joy of this special occasion.</p>
-
-    <!-- Row 3: Couple's names -->
     <div class="family-couple fu">
       <span class="family-groom">Brian Le</span>
       <span class="family-amp">&amp;</span>
       <span class="family-bride">Cathy Chu</span>
     </div>
-
   </section>
 
-  <!-- Ornament divider -->
   <div class="orn-divider">
     <svg width="190" height="18" viewBox="0 0 190 18" xmlns="http://www.w3.org/2000/svg">
       <line x1="0"   y1="9" x2="82"  y2="9" stroke="#C9A96E" stroke-width=".5" opacity=".38"/>
@@ -193,7 +149,6 @@
     </svg>
   </div>
 
-  <!-- ── Wedding Details ─────────────────────────────── -->
   <section id="sec-details">
     <h2 class="sec-title fu">The Wedding Details</h2>
     <div class="details-grid">
@@ -223,7 +178,6 @@
     </div>
   </section>
 
-  <!-- ── Day-of Timeline ────────────────────────────── -->
   <section id="sec-timeline">
     <h2 class="sec-title fu">Wedding Schedule</h2>
     <div class="timeline">
@@ -257,37 +211,25 @@
         <div class="tl-dot"></div>
         <div class="tl-empty"></div>
       </div>
+
     </div>
   </section>
 
-  <!-- ── Gallery ─────────────────────────────────────── -->
   <section id="sec-gallery">
     <h2 class="sec-title fu">Our Story</h2>
-    <div class="gallery-grid">
-      <div class="g-item fu">
-        <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800&q=80"
-             alt="Couple" loading="lazy">
+    <div class="gallery-carousel fu">
+      <div class="gc-main">
+        <button class="gc-arrow gc-prev" aria-label="Previous photo">&#8249;</button>
+        <div class="gc-display">
+          <img class="gc-img" id="gc-img-a" src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1200&q=80" alt="Our story">
+          <img class="gc-img" id="gc-img-b" src="" alt="Our story" style="opacity:0;">
+        </div>
+        <button class="gc-arrow gc-next" aria-label="Next photo">&#8250;</button>
       </div>
-      <div class="g-item fu">
-        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=700&q=80"
-             alt="Couple" loading="lazy">
-      </div>
-      <div class="g-item fu">
-        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=700&q=80"
-             alt="Wedding" loading="lazy">
-      </div>
-      <div class="g-item fu">
-        <img src="https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=700&q=80"
-             alt="Couple" loading="lazy">
-      </div>
-      <div class="g-item fu">
-        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=700&q=80"
-             alt="Wedding" loading="lazy">
-      </div>
+      <div class="gc-thumbs" id="gc-thumbs"></div>
     </div>
   </section>
 
-  <!-- ── RSVP ────────────────────────────────────────── -->
   <section id="sec-rsvp">
     <p class="eyebrow fu">Kindly Reply At your convenience</p>
     <h2 class="sec-title fu">Will You Join Us?</h2>
@@ -334,7 +276,6 @@
     </form>
   </section>
 
-  <!-- ── Footer ──────────────────────────────────────── -->
   <footer>
     <div class="ft-mono">C &amp; B</div>
     <p class="ft-text">December 17, 2026 &middot; Hanoi City</p>
@@ -343,7 +284,7 @@
     <p class="ft-text ft-copyright">&copy; 2026 Brian Gia Hung Le. All rights reserved.</p>
   </footer>
 
-</div><!-- /content -->
+</div>
 
 </body>
 </html>

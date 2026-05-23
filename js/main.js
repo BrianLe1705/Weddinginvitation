@@ -1,11 +1,5 @@
-/* ═══════════════════════════════════════════════════════
-   WEDDING INVITATION — main.js
-   Depends on: GSAP 3 + ScrollTrigger (loaded before this file)
-═══════════════════════════════════════════════════════ */
-
 gsap.registerPlugin(ScrollTrigger);
 
-/* ─── DOM REFERENCES ─────────────────────────────────── */
 const loader    = document.getElementById('loader');
 const envelope  = document.getElementById('envelope');
 const flapL     = document.getElementById('flap-left');
@@ -17,8 +11,6 @@ const musicBtn  = document.getElementById('music-btn');
 const icOn      = document.getElementById('ic-on');
 const icOff     = document.getElementById('ic-off');
 
-
-/* ─── SPLASH LOADER ──────────────────────────────────── */
 document.body.style.overflow = 'hidden';
 
 loader.addEventListener('click', e => {
@@ -29,8 +21,6 @@ loader.addEventListener('click', e => {
   initAudio();
 }, { once: true });
 
-/* ─── IDLE FLOAT ─────────────────────────────────────── */
-/* Subtle breathing motion before the user scrolls       */
 const floatAnim = gsap.to(envelope, {
   y: -10,
   duration: 3.8,
@@ -39,7 +29,6 @@ const floatAnim = gsap.to(envelope, {
   repeat: -1,
 });
 
-/* ─── ENVELOPE OPEN — SCROLL TRIGGER ─────────────────── */
 const openTl = gsap.timeline({
   scrollTrigger: {
     trigger: '#hero',
@@ -55,10 +44,7 @@ const openTl = gsap.timeline({
 });
 
 openTl
-  /* Fade out scroll cue immediately */
   .to(scrollCue, { opacity: 0, duration: .12 }, 0)
-
-  /* LEFT flap — heavier physics, slightly slower */
   .to(flapL, {
     x: '-108%',
     rotationZ: -1.8,
@@ -66,8 +52,6 @@ openTl
     ease: 'power2.inOut',
     duration: 1,
   }, 0.04)
-
-  /* RIGHT flap — lighter, fractionally faster */
   .to(flapR, {
     x: '108%',
     rotationZ: 1.2,
@@ -75,8 +59,6 @@ openTl
     ease: 'power2.inOut',
     duration: .92,
   }, 0.10)
-
-  /* Couple photo: fade + subtle scale-down reveal */
   .fromTo(
     coupleBg,
     { opacity: 0, scale: 1.07 },
@@ -84,7 +66,6 @@ openTl
     0.30
   );
 
-/* ─── FLOATING DUST PARTICLES ────────────────────────── */
 (function initParticles() {
   const canvas = document.getElementById('particles');
   const ctx    = canvas.getContext('2d');
@@ -133,7 +114,6 @@ openTl
   tick();
 }());
 
-/* ─── FADE-UP ON SCROLL ──────────────────────────────── */
 gsap.utils.toArray('.fu').forEach(el => {
   gsap.fromTo(
     el,
@@ -152,7 +132,6 @@ gsap.utils.toArray('.fu').forEach(el => {
   );
 });
 
-/* ─── AUDIO SYSTEM ───────────────────────────────────── */
 let audioReady = false;
 let playing    = false;
 
@@ -167,7 +146,7 @@ function fadeIn() {
       gsap.to(audio, { volume: .65, duration: 3, ease: 'power1.out' });
     })
     .catch(() => {
-      audioReady = false; // reset so the next interaction can retry
+      audioReady = false;
     });
 }
 
@@ -190,13 +169,10 @@ function initAudio() {
   }
 }
 
-/* Try on scroll — works if browser allows it */
 window.addEventListener('scroll',     () => initAudio(), { once: true });
-/* First touch or click anywhere guarantees autoplay policy is satisfied */
 window.addEventListener('touchstart', () => initAudio(), { once: true, passive: true });
 document.addEventListener('click',    () => initAudio(), { once: true });
 
-/* Manual toggle — stopPropagation prevents the document click above from double-firing */
 musicBtn.addEventListener('click', e => {
   e.stopPropagation();
   if (!audioReady) { audioReady = true; fadeIn(); }
@@ -204,8 +180,107 @@ musicBtn.addEventListener('click', e => {
   else              { fadeIn(); }
 });
 
-/* ─── RSVP FORM ──────────────────────────────────────── */
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyFdjJJMLH9QJ3kpZImV1kXV92kK8580Wkwai2toxAQyRM8sh_ePHid5qZiTXMBANgC-Q/exec'; // ← paste your deployed Apps Script URL here
+(function initCarousel() {
+  const photos = [
+    'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1200&q=80',
+    'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&q=80',
+    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&q=80',
+    'https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=1200&q=80',
+    'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&q=80',
+    'https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=1200&q=80',
+    'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&q=80',
+    'https://images.unsplash.com/photo-1550005809-91ad75fb315f?w=1200&q=80',
+    'https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=1200&q=80',
+    'https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=1200&q=80',
+  ];
+
+  let current  = 0;
+  let animating = false;
+  let timer;
+  const INTERVAL  = 4500;
+  const FLIP_TIME = 320;
+
+  let imgA = document.getElementById('gc-img-a');
+  let imgB = document.getElementById('gc-img-b');
+
+  imgA.style.zIndex = '2';
+  imgB.style.zIndex = '1';
+
+  const thumbsWrap = document.getElementById('gc-thumbs');
+  const prevBtn    = document.querySelector('.gc-prev');
+  const nextBtn    = document.querySelector('.gc-next');
+  const display    = document.querySelector('.gc-display');
+
+  photos.forEach((src, i) => {
+    const div = document.createElement('div');
+    div.className = 'gc-thumb' + (i === 0 ? ' active' : '');
+    const img = document.createElement('img');
+    img.src = src; img.alt = 'Photo ' + (i + 1); img.loading = 'lazy';
+    div.appendChild(img);
+    div.addEventListener('click', () => goTo(i, i >= current ? 1 : -1));
+    thumbsWrap.appendChild(div);
+  });
+
+  function clearFlipClasses(el) {
+    el.classList.remove('flip-out-left', 'flip-out-right', 'flip-in-left', 'flip-in-right');
+  }
+
+  function goTo(index, dir) {
+    if (animating || index === current) return;
+    animating = true;
+
+    const thumbs  = thumbsWrap.querySelectorAll('.gc-thumb');
+    thumbs[current].classList.remove('active');
+    current = (index + photos.length) % photos.length;
+
+    imgB.src = photos[current];
+    imgB.style.opacity = '1';
+
+    clearFlipClasses(imgA);
+    clearFlipClasses(imgB);
+    void imgA.offsetWidth;
+
+    imgA.classList.add(dir >= 0 ? 'flip-out-left'  : 'flip-out-right');
+    imgB.classList.add(dir >= 0 ? 'flip-in-right'  : 'flip-in-left');
+
+    setTimeout(() => {
+      clearFlipClasses(imgA);
+      clearFlipClasses(imgB);
+      imgA.style.opacity = '0';
+      [imgA, imgB] = [imgB, imgA];
+      imgA.style.opacity = '1';
+      animating = false;
+    }, FLIP_TIME * 2 + 50);
+
+    thumbs[current].classList.add('active');
+    const thumb = thumbs[current];
+    thumbsWrap.scrollTo({
+      left: thumb.offsetLeft - thumbsWrap.offsetWidth / 2 + thumb.offsetWidth / 2,
+      behavior: 'smooth',
+    });
+
+    resetTimer();
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(current + 1, 1), INTERVAL);
+  }
+
+  prevBtn.addEventListener('click', () => goTo(current - 1, -1));
+  nextBtn.addEventListener('click', () => goTo(current + 1,  1));
+
+  let touchStartX = 0;
+  display.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  display.addEventListener('touchend',   e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1, diff > 0 ? 1 : -1);
+  });
+
+  resetTimer();
+}());
+
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyFdjJJMLH9QJ3kpZImV1kXV92kK8580Wkwai2toxAQyRM8sh_ePHid5qZiTXMBANgC-Q/exec';
 
 document.getElementById('rsvp-form').addEventListener('submit', async e => {
   e.preventDefault();
