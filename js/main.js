@@ -1,4 +1,5 @@
 gsap.registerPlugin(ScrollTrigger);
+window.scrollTo(0, 0);
 
 const loader    = document.getElementById('loader');
 const envelope  = document.getElementById('envelope');
@@ -9,17 +10,35 @@ const scrollCue = document.getElementById('scroll-cue');
 const audio     = document.getElementById('wedding-audio');
 const musicBtn  = document.getElementById('music-btn');
 const icOn      = document.getElementById('ic-on');
-const icOff     = document.getElementById('ic-off');
+const icOff        = document.getElementById('ic-off');
+const langToggleBtn = document.getElementById('lang-toggle-btn');
+const btnLangEn    = document.getElementById('btn-lang-en');
+const btnLangVi    = document.getElementById('btn-lang-vi');
 
 document.body.style.overflow = 'hidden';
 
-loader.addEventListener('click', e => {
-  e.stopPropagation();
+// Block background taps on the loader — only the lang buttons should act
+loader.addEventListener('click', e => e.stopPropagation());
+
+function dismissLoader() {
   document.body.style.overflow = '';
   loader.classList.add('out');
   setTimeout(() => loader.remove(), 950);
+  langToggleBtn.style.display = '';
   initAudio();
-}, { once: true });
+}
+
+btnLangEn.addEventListener('click', e => {
+  e.stopPropagation();
+  setLang('en');
+  dismissLoader();
+});
+
+btnLangVi.addEventListener('click', e => {
+  e.stopPropagation();
+  setLang('vi');
+  dismissLoader();
+});
 
 const floatAnim = gsap.to(envelope, {
   y: -10,
@@ -180,6 +199,159 @@ musicBtn.addEventListener('click', e => {
   else              { fadeIn(); }
 });
 
+const i18n = {
+  en: {
+    'flap-date':            '17 · December · 2026',
+    'scroll-cue':           'scroll to open',
+    'wedding-date':         'Thursday · December 17 · 2026',
+    'wedding-location':     'Hanoi City, Viet Nam',
+    'brides-family':        "Bride's Family",
+    'grooms-family':        "Groom's Family",
+    'family-message':       'Together with our families, we sincerely invite you to join us in celebrating our wedding ceremony and to share in the joy of this special occasion.',
+    'details-title':        'The Wedding Details',
+    'date-label':           'Date',
+    'date-sub':             'Thursday',
+    'ceremony-venue-label': 'Ceremony Venue',
+    'map-btn':              'Open in Maps',
+    'dress-label':          'Dress Code',
+    'dress-value':          'Black Tie',
+    'dress-sub':            'Formal Attire Requested',
+    'timeline-title':       'Ceremony Schedule',
+    'ev-ceremony':          'Ceremony',
+    'ev-cocktail':          'Cocktail Hour',
+    'ev-cocktail-place':    'Garden Terrace',
+    'ev-reception':         'Reception',
+    'rsvp-eyebrow':         'Kindly Reply At your convenience',
+    'rsvp-title':           'Will You Join Us?',
+    'label-name':           'Full Name',
+    'ph-name':              'Your full name',
+    'label-side':           'Which side are you attending?',
+    'opt-bride-side':       "Bride's Side",
+    'opt-groom-side':       "Groom's Side",
+    'label-phone':          'Phone Number',
+    'ph-phone':             'Your phone number',
+    'label-attendance':     'Attendance',
+    'opt-select':           'Please select',
+    'opt-yes':              'Accept',
+    'opt-no':               'Decline',
+    'label-guests':         'Number of Guests',
+    'ph-guests':            'Enter number of guests',
+    'label-dietary':        'Dietary Requirements',
+    'ph-dietary':           'Any allergies or preferences',
+    'btn-rsvp':             'Send RSVP',
+    'footer-date':          'December 17, 2026 · Hanoi City',
+    'footer-made':          'Made with love',
+    'fc-names':             'Cathy & Hung',
+    'groom-name':           'Hung',
+    'family-bride-father':  'Mr. Chu Dinh Luong',
+    'family-bride-mother':  'Mrs. Nguyen Thi Huong Giang',
+    'family-groom-father':  'Mr. Le Van Sinh',
+    'family-groom-mother':  'Mrs. Nguyen Thi Huong',
+    'family-groom-name':    'Hung Le',
+    'family-bride-name':    'Cathy Chu',
+    'date-value-main':      'December 17',
+    'venue-name':           'Long Vi Palace',
+    'venue-sub':            '3A Dao Duy Anh st, Kim Lien, Hanoi · 12:00 PM',
+  },
+  vi: {
+    'flap-date':            '17 · Tháng 12 · 2026',
+    'scroll-cue':           'cuộn để mở',
+    'wedding-date':         'Thứ Năm · 17 Tháng 12 · 2026',
+    'wedding-location':     'Hà Nội, Việt Nam',
+    'brides-family':        'Nhà Gái',
+    'grooms-family':        'Nhà Trai',
+    'family-message':       'Trân trọng kính mời tới dự bữa tiệc Lễ Thành Hôn cùng gia đình chúng tôi',
+    'details-title':        'Chương Trình',
+    'date-label':           'Ngày',
+    'date-sub':             'Thứ Năm',
+    'ceremony-venue-label': 'Địa Điểm Tổ Chức',
+    'map-btn':              'Xem bản đồ',
+    'dress-label':          'Trang Phục',
+    'dress-value':          'Lịch Sự',
+    'dress-sub':            'Trang phục trang trọng',
+    'timeline-title':       'Chương Trình Tiệc Cưới',
+    'ev-ceremony':          'Lễ Thành Hôn',
+    'ev-cocktail':          'Tiệc Cocktail',
+    'ev-cocktail-place':    'Sân Vườn',
+    'ev-reception':         'Tiệc Cưới',
+    'rsvp-eyebrow':         'Kindly Reply At your convenience',
+    'rsvp-title':           'Bạn Sẽ Tham Dự Chứ?',
+    'label-name':           'Họ và Tên',
+    'ph-name':              'Họ tên đầy đủ của bạn',
+    'label-side':           'Bạn sẽ tham dự cùng ai?',
+    'opt-bride-side':       'Nhà Gái',
+    'opt-groom-side':       'Nhà Trai',
+    'label-phone':          'Số Điện Thoại',
+    'ph-phone':             'Nhập số điện thoại của bạn',
+    'label-attendance':     'Tham Dự',
+    'opt-select':           'Vui lòng chọn',
+    'opt-yes':              'Xác Nhận Tham Dự',
+    'opt-no':               'Không Tham Dự Được',
+    'label-guests':         'Số Người Tham Dự',
+    'ph-guests':            'Nhập số người tham dự',
+    'label-dietary':        'Yêu Cầu Đặc Biệt',
+    'ph-dietary':           'Bạn có bị dị ứng hoặc có yêu cầu đặc biệt gì không',
+    'btn-rsvp':             'Gửi Xác Nhận',
+    'footer-date':          '17 Tháng 12, 2026 · Hà Nội',
+    'footer-made':          'Cảm ơn bạn đã dành tình cảm cho chúng mình, sự hiện diện của bạn chính là món quà ý nghĩa nhất trong ngày vui của chúng mình.',
+    'fc-names':             'Cathy & Hưng',
+    'groom-name':           'Hưng',
+    'family-bride-father':  'Ông Chu Đình Lương',
+    'family-bride-mother':  'Bà Nguyễn Thị Hương Giang',
+    'family-groom-father':  'Ông Lê Văn Sinh',
+    'family-groom-mother':  'Bà Nguyễn Thị Hương',
+    'family-groom-name':    'Gia Hưng',
+    'family-bride-name':    'Cathy Hà Linh',
+    'date-value-main':      '17 Tháng 12',
+    'venue-name':           'Long Vĩ',
+    'venue-sub':            '3A Phố Đào Duy Anh, Kim Liên, Hà Nội · 12:00 trưa',
+  },
+};
+
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (i18n[lang][key] !== undefined) el.textContent = i18n[lang][key];
+  });
+
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.dataset.i18nPh;
+    if (i18n[lang][key] !== undefined) el.placeholder = i18n[lang][key];
+  });
+
+  langToggleBtn.textContent = lang === 'en' ? 'VI' : 'EN';
+}
+
+langToggleBtn.addEventListener('click', () => {
+  setLang(currentLang === 'en' ? 'vi' : 'en');
+});
+
+window.addEventListener('beforeunload', () => {
+  if (playing) {
+    audio.pause();
+    audio.currentTime = 0;
+  }
+});
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    if (playing) {
+      gsap.killTweensOf(audio);
+      audio.pause();
+    }
+  } else {
+    if (playing) {
+      audio.play().catch(() => {});
+      gsap.to(audio, { volume: .65, duration: 1.5, ease: 'power1.out' });
+    }
+  }
+});
+
 (function initCarousel() {
   const photos = [
     'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1200&q=80',
@@ -293,7 +465,7 @@ document.getElementById('rsvp-form').addEventListener('submit', async e => {
   const els = form.elements;
   const data = {
     name:       els['name'].value.trim(),
-    email:      els['email'].value.trim(),
+    side:       els['side'].value,
     phone:      els['phone'].value.trim(),
     attendance: els['attendance'].value,
     guests:     els['guests'].value,

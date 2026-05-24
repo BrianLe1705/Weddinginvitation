@@ -927,3 +927,67 @@ footer {
 @media (max-width: 480px) {
   .fc-main { font-size: clamp(36px, 12vw, 56px); }
 }
+
+.loader-lang-btns {
+  display: flex;
+  gap: clamp(12px, 3vw, 20px);
+  justify-content: center;
+  margin-top: clamp(28px, 4vw, 40px);
+}
+
+.lang-pick-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: clamp(11px, 1.6vw, 14px);
+  letter-spacing: .38em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid rgba(201, 169, 110, .40);
+  border-radius: 2px;
+  padding: clamp(10px, 1.6vw, 14px) clamp(22px, 4vw, 38px);
+  cursor: pointer;
+  transition: background .25s, border-color .25s, color .25s, box-shadow .25s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lang-pick-btn:hover,
+.lang-pick-btn:focus-visible {
+  background: rgba(201, 169, 110, .10);
+  border-color: var(--champ);
+  box-shadow: 0 0 18px rgba(201, 169, 110, .18);
+  outline: none;
+}
+
+.lang-pick-btn:active {
+  background: rgba(201, 169, 110, .20);
+}
+
+#lang-toggle-btn {
+  position: fixed;
+  bottom: clamp(18px, 3vw, 30px);
+  right: calc(clamp(18px, 3vw, 30px) + clamp(42px, 5vw, 50px) + 10px);
+  height: clamp(42px, 5vw, 50px);
+  padding: 0 clamp(10px, 1.8vw, 16px);
+  border-radius: 999px;
+  border: 1px solid rgba(201, 169, 110, .45);
+  background: rgba(255, 248, 240, .88);
+  backdrop-filter: blur(10px);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: clamp(10px, 1.3vw, 12px);
+  letter-spacing: .18em;
+  color: var(--gold);
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(44, 31, 14, .10);
+  transition: border-color .3s, box-shadow .3s, color .3s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#lang-toggle-btn:hover {
+  border-color: var(--champ);
+  box-shadow: 0 4px 24px rgba(201, 169, 110, .22);
+  color: var(--champ);
+}

@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Montserrat:wght@100;200;300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script>history.scrollRestoration = 'manual';</script>
   <script src="js/protect.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
@@ -29,7 +30,10 @@
       </svg>
       <span></span>
     </div>
-    <p class="loader-tap">tap to open</p>
+    <div class="loader-lang-btns">
+      <button class="lang-pick-btn" id="btn-lang-en">English</button>
+      <button class="lang-pick-btn" id="btn-lang-vi">Tiếng Việt</button>
+    </div>
   </div>
 </div>
 
@@ -46,6 +50,8 @@
     <line x1="3" y1="3" x2="21" y2="21" stroke="var(--champ)" stroke-width="1.5"/>
   </svg>
 </button>
+
+<button id="lang-toggle-btn" aria-label="Toggle language" style="display:none">VI</button>
 
 <audio id="wedding-audio" loop preload="auto">
   <source src="music/I do.mp3" type="audio/mpeg">
@@ -89,8 +95,8 @@
             </svg>
             <span></span>
           </div>
-          <p class="fc-names">Cathy &amp; Hung</p>
-          <p class="fc-date">17 &middot; December &middot; 2026</p>
+          <p class="fc-names" data-i18n="fc-names">Cathy &amp; Hung</p>
+          <p class="fc-date" data-i18n="flap-date">17 &middot; December &middot; 2026</p>
         </div>
         <div id="wax-seal">
           <img src="images/letter wax.png" alt="Wax seal">
@@ -100,7 +106,7 @@
     </div>
 
     <div id="scroll-cue">
-      <p>scroll to open</p>
+      <p data-i18n="scroll-cue">scroll to open</p>
       <div class="sc-line"></div>
     </div>
 
@@ -114,31 +120,31 @@
     <div class="couple-names fu">
       <span>Cathy</span>
       <span class="ampersand">&amp;</span>
-      <span>Hung</span>
+      <span data-i18n="groom-name">Hung</span>
     </div>
-    <p class="wedding-date fu">Thursday &middot; December 17 &middot; 2026</p>
-    <p class="wedding-location fu">Hanoi City, Viet Nam</p>
+    <p class="wedding-date fu" data-i18n="wedding-date">Thursday &middot; December 17 &middot; 2026</p>
+    <p class="wedding-location fu" data-i18n="wedding-location">Hanoi City, Viet Nam</p>
   </section>
 
   <section id="sec-family">
     <div class="family-grid">
       <div class="family-side fu">
-        <p class="family-role">Bride's Family</p>
-        <p class="family-name">Mr. Chu Dinh Luong</p>
-        <p class="family-name">Mrs. Nguyen Thi Huong Giang</p>
+        <p class="family-role" data-i18n="brides-family">Bride's Family</p>
+        <p class="family-name" data-i18n="family-bride-father">Mr. Chu Dinh Luong</p>
+        <p class="family-name" data-i18n="family-bride-mother">Mrs. Nguyen Thi Huong Giang</p>
       </div>
       <div class="family-vline"></div>
       <div class="family-side fu">
-        <p class="family-role">Groom's Family</p>
-        <p class="family-name">Mr. Le Van Sinh</p>
-        <p class="family-name">Mrs. Nguyen Thi Huong</p>
+        <p class="family-role" data-i18n="grooms-family">Groom's Family</p>
+        <p class="family-name" data-i18n="family-groom-father">Mr. Le Van Sinh</p>
+        <p class="family-name" data-i18n="family-groom-mother">Mrs. Nguyen Thi Huong</p>
       </div>
     </div>
-    <p class="family-message fu">Together with our families, we sincerely invite you to join us in celebrating our wedding ceremony and to share in the joy of this special occasion.</p>
+    <p class="family-message fu" data-i18n="family-message">Together with our families, we sincerely invite you to join us in celebrating our wedding ceremony and to share in the joy of this special occasion.</p>
     <div class="family-couple fu">
-      <span class="family-groom">Hung Le</span>
+      <span class="family-groom" data-i18n="family-groom-name">Hung Le</span>
       <span class="family-amp">&amp;</span>
-      <span class="family-bride">Cathy Chu</span>
+      <span class="family-bride" data-i18n="family-bride-name">Cathy Chu</span>
     </div>
   </section>
 
@@ -151,42 +157,42 @@
   </div>
 
   <section id="sec-details">
-    <h2 class="sec-title fu">The Wedding Details</h2>
+    <h2 class="sec-title fu" data-i18n="details-title">Wedding Details</h2>
     <div class="details-grid">
 
       <div class="d-card fu">
         <div class="d-icon">◇</div>
-        <div class="d-label">Date</div>
-        <div class="d-value">December 17<br>2026</div>
-        <div class="d-sub">Thursday</div>
+        <div class="d-label" data-i18n="date-label">Date</div>
+        <div class="d-value"><span data-i18n="date-value-main">December 17</span><br>2026</div>
+        <div class="d-sub" data-i18n="date-sub">Thursday</div>
       </div>
 
       <div class="d-card fu">
         <div class="d-icon">◇</div>
-        <div class="d-label">Ceremony Venue</div>
-        <div class="d-value">Long Vi Palace</div>
-        <div class="d-sub">3A Dao Duy Anh st, Kim Lien, Hanoi &middot; 12:00 PM</div>
-        <a class="d-map-btn" href="https://maps.app.goo.gl/1uK31dvxwwPG157P9?g_st=ic" target="_blank" rel="noopener">Open in Maps</a>
+        <div class="d-label" data-i18n="ceremony-venue-label">Ceremony Venue</div>
+        <div class="d-value" data-i18n="venue-name">Long Vi Palace</div>
+        <div class="d-sub" data-i18n="venue-sub">3A Dao Duy Anh st, Kim Lien, Hanoi &middot; 12:00 PM</div>
+        <a class="d-map-btn" href="https://maps.app.goo.gl/1uK31dvxwwPG157P9?g_st=ic" target="_blank" rel="noopener" data-i18n="map-btn">Open in Maps</a>
       </div>
 
       <div class="d-card fu">
         <div class="d-icon">◇</div>
-        <div class="d-label">Dress Code</div>
-        <div class="d-value">Black Tie</div>
-        <div class="d-sub">Formal Attire Requested</div>
+        <div class="d-label" data-i18n="dress-label">Dress Code</div>
+        <div class="d-value" data-i18n="dress-value">Black Tie</div>
+        <div class="d-sub" data-i18n="dress-sub">Formal Attire Requested</div>
       </div>
 
     </div>
   </section>
 
   <section id="sec-timeline">
-    <h2 class="sec-title fu">Wedding Schedule</h2>
+    <h2 class="sec-title fu" data-i18n="timeline-title">Ceremony Schedule</h2>
     <div class="timeline">
 
       <div class="tl-item fu">
         <div class="tl-content">
           <div class="tl-time">3:00 PM</div>
-          <div class="tl-ev">Ceremony</div>
+          <div class="tl-ev" data-i18n="ev-ceremony">Ceremony</div>
           <div class="tl-place">[Ceremony Venue]</div>
         </div>
         <div class="tl-dot"></div>
@@ -198,15 +204,15 @@
         <div class="tl-dot"></div>
         <div class="tl-content">
           <div class="tl-time">4:30 PM</div>
-          <div class="tl-ev">Cocktail Hour</div>
-          <div class="tl-place">Garden Terrace</div>
+          <div class="tl-ev" data-i18n="ev-cocktail">Cocktail Hour</div>
+          <div class="tl-place" data-i18n="ev-cocktail-place">Garden Terrace</div>
         </div>
       </div>
 
       <div class="tl-item fu">
         <div class="tl-content">
           <div class="tl-time">6:00 PM</div>
-          <div class="tl-ev">Reception</div>
+          <div class="tl-ev" data-i18n="ev-reception">Reception</div>
           <div class="tl-place">[Reception Venue]</div>
         </div>
         <div class="tl-dot"></div>
@@ -232,46 +238,50 @@
   </section>
 
   <section id="sec-rsvp">
-    <p class="eyebrow fu">Kindly Reply At your convenience</p>
-    <h2 class="sec-title fu">Will You Join Us?</h2>
+    <p class="eyebrow fu" data-i18n="rsvp-eyebrow">Kindly Reply At your convenience</p>
+    <h2 class="sec-title fu" data-i18n="rsvp-title">Will You Join Us?</h2>
     <form class="rsvp-form" id="rsvp-form">
 
       <div class="fg fu">
-        <label>Full Name</label>
-        <input type="text" name="name" placeholder="Your full name" required>
+        <label data-i18n="label-name">Full Name</label>
+        <input type="text" name="name" placeholder="Your full name" data-i18n-ph="ph-name" required>
       </div>
 
       <div class="fg fu">
-        <label>Email Address</label>
-        <input type="email" name="email" placeholder="Your email address" required>
-      </div>
-
-      <div class="fg fu">
-        <label>Phone Number</label>
-        <input type="tel" name="phone" placeholder="Your phone number">
-      </div>
-
-      <div class="fg fu">
-        <label>Attendance</label>
-        <select name="attendance" required>
-          <option value="" disabled selected>Please select</option>
-          <option value="yes">Accept</option>
-          <option value="no">Decline</option>
+        <label data-i18n="label-side">Which side are you attending?</label>
+        <select name="side" required>
+          <option value="" disabled selected data-i18n="opt-select">Please select</option>
+          <option value="bride" data-i18n="opt-bride-side">Bride's Side</option>
+          <option value="groom" data-i18n="opt-groom-side">Groom's Side</option>
         </select>
       </div>
 
       <div class="fg fu">
-        <label>Number of Guests</label>
-        <input type="number" name="guests" min="1" max="20" value="1" placeholder="Enter number of guests">
+        <label data-i18n="label-phone">Phone Number</label>
+        <input type="tel" name="phone" placeholder="Your phone number" data-i18n-ph="ph-phone">
       </div>
 
       <div class="fg fu">
-        <label>Dietary Requirements</label>
-        <input type="text" name="dietary" placeholder="Any allergies or preferences">
+        <label data-i18n="label-attendance">Attendance</label>
+        <select name="attendance" required>
+          <option value="" disabled selected data-i18n="opt-select">Please select</option>
+          <option value="yes" data-i18n="opt-yes">Accept</option>
+          <option value="no" data-i18n="opt-no">Decline</option>
+        </select>
+      </div>
+
+      <div class="fg fu">
+        <label data-i18n="label-guests">Number of Guests</label>
+        <input type="number" name="guests" min="1" max="20" value="1" placeholder="Enter number of guests" data-i18n-ph="ph-guests">
+      </div>
+
+      <div class="fg fu">
+        <label data-i18n="label-dietary">Dietary Requirements</label>
+        <input type="text" name="dietary" placeholder="Any allergies or preferences" data-i18n-ph="ph-dietary">
       </div>
 
       <div style="text-align:center" class="fu">
-        <button class="btn-rsvp" type="submit">Send RSVP</button>
+        <button class="btn-rsvp" type="submit" data-i18n="btn-rsvp">Send RSVP</button>
       </div>
 
     </form>
@@ -279,8 +289,8 @@
 
   <footer>
     <div class="ft-mono">C &amp; H</div>
-    <p class="ft-text">December 17, 2026 &middot; Hanoi City</p>
-    <p class="ft-text ft-made">Made with love</p>
+    <p class="ft-text" data-i18n="footer-date">December 17, 2026 &middot; Hanoi City</p>
+    <p class="ft-text ft-made" data-i18n="footer-made">Made with love</p>
     <p class="ft-text ft-credit">Music: "I Do" — <a href="https://www.youtube.com/watch?v=d1yHx9bTeHU" target="_blank" rel="noopener">view original</a></p>
     <p class="ft-text ft-copyright">&copy; 2026 Hung Le. All rights reserved.</p>
   </footer>
