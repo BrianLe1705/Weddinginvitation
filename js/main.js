@@ -52,8 +52,8 @@ const openTl = gsap.timeline({
   scrollTrigger: {
     trigger: '#hero',
     start: 'top top',
-    end: '40% top',
-    scrub: 0.6,
+    end: '28% top',
+    scrub: 0.42,
     onEnter() {
       floatAnim.kill();
       gsap.set(envelope, { y: 0 });
@@ -103,11 +103,11 @@ openTl
   resize();
   window.addEventListener('resize', resize);
 
-  for (let i = 0; i < 38; i++) {
+  for (let i = 0; i < 45; i++) {
     particles.push({
       x:     Math.random() * window.innerWidth,
       y:     Math.random() * window.innerHeight,
-      r:     Math.random() * 1.4 + 0.25,
+      r:     Math.random() * 2.2 + 0.45,
       vx:    (Math.random() - 0.5) * 0.18,
       vy:    -(Math.random() * 0.28 + 0.08),
       alpha: Math.random() * 0.38 + 0.08,
@@ -236,8 +236,8 @@ const i18n = {
     'opt-no':               'Decline',
     'label-guests':         'Number of Guests',
     'ph-guests':            'Enter number of guests',
-    'label-dietary':        'Dietary Requirements',
-    'ph-dietary':           'Any allergies or preferences',
+    'label-dietary':        'Leave us a message',
+    'ph-dietary':           'Special request',
     'btn-rsvp':             'Send RSVP',
     'footer-date':          'December 17, 2026 · Hanoi City',
     'footer-made':          'Made with love',
@@ -289,8 +289,8 @@ const i18n = {
     'opt-no':               'Không Tham Dự Được',
     'label-guests':         'Số Người Tham Dự',
     'ph-guests':            'Nhập số người tham dự',
-    'label-dietary':        'Yêu Cầu Đặc Biệt',
-    'ph-dietary':           'Bạn có bị dị ứng hoặc có yêu cầu đặc biệt gì không',
+    'label-dietary':        'Gửi lời nhắn đến cô dâu và chú rể',
+    'ph-dietary':           'Nhắn ở đây',
     'btn-rsvp':             'Gửi Xác Nhận',
     'footer-date':          '17 Tháng 12, 2026 · Hà Nội',
     'footer-made':          'Cảm ơn bạn đã dành tình cảm cho chúng mình, sự hiện diện của bạn chính là món quà ý nghĩa nhất trong ngày vui của chúng mình.',
@@ -352,105 +352,6 @@ document.addEventListener('visibilitychange', () => {
   }
 });
 
-(function initCarousel() {
-  const photos = [
-    'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1200&q=80',
-    'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&q=80',
-    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&q=80',
-    'https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=1200&q=80',
-    'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&q=80',
-    'https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=1200&q=80',
-    'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&q=80',
-    'https://images.unsplash.com/photo-1550005809-91ad75fb315f?w=1200&q=80',
-    'https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=1200&q=80',
-    'https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=1200&q=80',
-  ];
-
-  let current  = 0;
-  let animating = false;
-  let timer;
-  const INTERVAL  = 4500;
-  const FLIP_TIME = 320;
-
-  let imgA = document.getElementById('gc-img-a');
-  let imgB = document.getElementById('gc-img-b');
-
-  imgA.style.zIndex = '2';
-  imgB.style.zIndex = '1';
-
-  const thumbsWrap = document.getElementById('gc-thumbs');
-  const prevBtn    = document.querySelector('.gc-prev');
-  const nextBtn    = document.querySelector('.gc-next');
-  const display    = document.querySelector('.gc-display');
-
-  photos.forEach((src, i) => {
-    const div = document.createElement('div');
-    div.className = 'gc-thumb' + (i === 0 ? ' active' : '');
-    const img = document.createElement('img');
-    img.src = src; img.alt = 'Photo ' + (i + 1); img.loading = 'lazy';
-    div.appendChild(img);
-    div.addEventListener('click', () => goTo(i, i >= current ? 1 : -1));
-    thumbsWrap.appendChild(div);
-  });
-
-  function clearFlipClasses(el) {
-    el.classList.remove('flip-out-left', 'flip-out-right', 'flip-in-left', 'flip-in-right');
-  }
-
-  function goTo(index, dir) {
-    if (animating || index === current) return;
-    animating = true;
-
-    const thumbs  = thumbsWrap.querySelectorAll('.gc-thumb');
-    thumbs[current].classList.remove('active');
-    current = (index + photos.length) % photos.length;
-
-    imgB.src = photos[current];
-    imgB.style.opacity = '1';
-
-    clearFlipClasses(imgA);
-    clearFlipClasses(imgB);
-    void imgA.offsetWidth;
-
-    imgA.classList.add(dir >= 0 ? 'flip-out-left'  : 'flip-out-right');
-    imgB.classList.add(dir >= 0 ? 'flip-in-right'  : 'flip-in-left');
-
-    setTimeout(() => {
-      clearFlipClasses(imgA);
-      clearFlipClasses(imgB);
-      imgA.style.opacity = '0';
-      [imgA, imgB] = [imgB, imgA];
-      imgA.style.opacity = '1';
-      animating = false;
-    }, FLIP_TIME * 2 + 50);
-
-    thumbs[current].classList.add('active');
-    const thumb = thumbs[current];
-    thumbsWrap.scrollTo({
-      left: thumb.offsetLeft - thumbsWrap.offsetWidth / 2 + thumb.offsetWidth / 2,
-      behavior: 'smooth',
-    });
-
-    resetTimer();
-  }
-
-  function resetTimer() {
-    clearInterval(timer);
-    timer = setInterval(() => goTo(current + 1, 1), INTERVAL);
-  }
-
-  prevBtn.addEventListener('click', () => goTo(current - 1, -1));
-  nextBtn.addEventListener('click', () => goTo(current + 1,  1));
-
-  let touchStartX = 0;
-  display.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-  display.addEventListener('touchend',   e => {
-    const diff = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1, diff > 0 ? 1 : -1);
-  });
-
-  resetTimer();
-}());
 
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyFdjJJMLH9QJ3kpZImV1kXV92kK8580Wkwai2toxAQyRM8sh_ePHid5qZiTXMBANgC-Q/exec';
 

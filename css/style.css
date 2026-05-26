@@ -16,11 +16,11 @@
   --paper:   #F5EDD8;
   --paper-d: #E8D9B8;
   --cream:   #FFF8F0;
-  --champ:   #C9A96E;
-  --champ-l: #E8D5A3;
-  --gold:    #B8935A;
-  --dark:    #2C1F0E;
-  --warm:    #4A3728;
+  --champ:   #A1AF88;
+  --champ-l: #CCD3C0;
+  --gold:    #90A172;
+  --dark:    #222B18;
+  --warm:    #384A28;
   --shadow:  rgba(44, 31, 14, .15);
 }
 
@@ -71,7 +71,7 @@ body::after {
   font-weight: normal;
   font-style: normal;
   font-size: clamp(52px, 10vw, 88px);
-  color: #8B6B38;
+  color: #5E7848;
   letter-spacing: .06em;
   text-align: center;
   margin-bottom: 14px;
@@ -123,16 +123,10 @@ body::after {
   position: fixed;
   inset: 0;
   z-index: 0;
-  background: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80')
+  background: url('../images/couple.png')
     center / cover no-repeat;
   opacity: 0;
   will-change: opacity;
-}
-#couple-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 45%, transparent 32%, rgba(12, 6, 2, .58) 100%);
 }
 
 #particles {
@@ -160,6 +154,24 @@ body::after {
   display: flex;
   will-change: transform;
 }
+
+#envelope-names {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(40px, 6vw, 80px);
+  pointer-events: none;
+}
+#envelope-names .eyebrow          { color: var(--ivory); }
+#envelope-names .couple-names     { color: var(--ivory); }
+#envelope-names .couple-names .ampersand { color: rgba(249, 243, 232, .65); }
+#envelope-names .wedding-date     { color: var(--ivory); }
+#envelope-names .wedding-location { color: rgba(249, 243, 232, .70); }
 
 #flap-left {
   position: absolute;
@@ -203,11 +215,7 @@ body::after {
   z-index: 1;
   will-change: transform;
   transform-origin: right center;
-  background-image:
-    linear-gradient(160deg, rgba(0, 0, 0, .10) 0%, rgba(255, 252, 248, .10) 100%),
-    url('../images/background.png');
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(160deg, rgba(0, 0, 0, .10) 0%, rgba(255, 252, 248, .10) 100%);
 }
 #flap-right::before {
   content: '';
@@ -253,7 +261,7 @@ body::after {
   font-weight: normal;
   font-style: normal;
   font-size: clamp(44px, 7.5vw, 88px);
-  color: #8B6B38;
+  color: #5E7848;
   line-height: .95;
   text-align: center;
   letter-spacing: .02em;
@@ -286,11 +294,12 @@ body::after {
 }
 .fc-names {
   font-family: 'Cormorant Garamond', serif;
-  font-weight: 500;
+  font-weight: normal;
   font-size: clamp(20px, 3vw, 32px);
   color: var(--warm);
   letter-spacing: .08em;
   text-align: center;
+  text-transform: uppercase;
 }
 .fc-date {
   font-family: 'Montserrat', sans-serif;
@@ -321,11 +330,11 @@ body::after {
 
 #wax-seal {
   position: absolute;
-  right: clamp(-160px, -14vw, -110px);
+  right: clamp(-136px, -11.9vw, -94px);
   top: 50%;
   transform: translateY(-50%);
-  width:  clamp(220px, 28vw, 320px);
-  height: clamp(220px, 28vw, 320px);
+  width:  clamp(187px, 23.8vw, 272px);
+  height: clamp(187px, 23.8vw, 272px);
   z-index: 20;
   animation: sealGlow 3s ease-in-out infinite;
 }
@@ -336,8 +345,8 @@ body::after {
   display: block;
 }
 @keyframes sealGlow {
-  0%, 100% { filter: drop-shadow(0 4px 12px rgba(180, 138, 36, .40)); }
-  50%       { filter: drop-shadow(0 6px 28px rgba(201, 169, 110, .80)); }
+  0%, 100% { filter: drop-shadow(0 4px 12px rgba(94, 120, 72, .40)); }
+  50%       { filter: drop-shadow(0 6px 28px rgba(161, 175, 136, .80)); }
 }
 
 #scroll-cue {
@@ -415,7 +424,8 @@ body::after {
 #content { position: relative; z-index: 4; }
 
 #sec-couple {
-  background: rgba(255, 248, 240, 0.8);
+  background: transparent;
+
   text-align: center;
   padding: clamp(80px, 12vw, 140px) clamp(20px, 5vw, 60px);
   min-height: 100vh;
@@ -425,6 +435,7 @@ body::after {
   align-items: center;
   justify-content: center;
 }
+
 .eyebrow {
   font-family: 'Montserrat', sans-serif;
   font-weight: 200;
@@ -437,7 +448,7 @@ body::after {
 .couple-names {
   font-family: 'Great Vibes', cursive;
   font-size: clamp(40px, 8vw, 96px);
-  color: #8B6B38;
+  color: #5E7848;
   line-height: 1.05;
 }
 .ampersand {
@@ -528,7 +539,7 @@ body::after {
 .family-bride {
   font-family: 'Madelyn', 'Great Vibes', cursive;
   font-size: clamp(44px, 8vw, 78px);
-  color: #8B6B38;
+  color: #5E7848;
   line-height: 1.1;
 }
 .family-amp {
@@ -558,6 +569,14 @@ body::after {
   color: var(--dark);
   text-align: center;
   margin-bottom: clamp(40px, 6vw, 70px);
+}
+#sec-details .sec-title,
+#sec-timeline .sec-title,
+#sec-gallery .sec-title,
+#sec-rsvp .sec-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  color: #2E3D20;
 }
 .details-grid {
   display: grid;
@@ -806,7 +825,7 @@ body::after {
 }
 
 #sec-rsvp {
-  background: var(--cream);
+  background: rgba(255, 248, 240, 0.8);
   text-align: center;
   padding: clamp(70px, 10vw, 120px) clamp(20px, 5vw, 60px);
 }
@@ -818,10 +837,10 @@ body::after {
 .fg label {
   display: block;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 200;
-  font-size: 8px;
+  font-weight: 400;
+  font-size: 11px;
   letter-spacing: .44em;
-  color: var(--champ);
+  color: #2E3D20;
   text-transform: uppercase;
   margin-bottom: 9px;
 }
@@ -882,7 +901,7 @@ footer {
   font-weight: 300;
   font-size: 10px;
   letter-spacing: .38em;
-  color: rgba(249, 243, 232, .75);
+  color: rgba(220, 232, 212, .75);
   text-transform: uppercase;
 }
 .ft-made { margin-top: 14px; opacity: .55; }
@@ -898,7 +917,7 @@ footer {
 
 @media (max-width: 768px) {
   .fcorner    { width: clamp(52px, 13vw, 75px); }
-  #wax-seal   { width: 176px; height: 176px; right: -88px; }
+  #wax-seal   { width: 150px; height: 150px; right: -75px; }
   #flap-left  { width: 62%; }
   #flap-right { width: 41%; }
   .gc-thumb { width: 52px; height: 38px; }
@@ -953,14 +972,14 @@ footer {
 
 .lang-pick-btn:hover,
 .lang-pick-btn:focus-visible {
-  background: rgba(201, 169, 110, .10);
+  background: rgba(161, 175, 136, .10);
   border-color: var(--champ);
-  box-shadow: 0 0 18px rgba(201, 169, 110, .18);
+  box-shadow: 0 0 18px rgba(161, 175, 136, .18);
   outline: none;
 }
 
 .lang-pick-btn:active {
-  background: rgba(201, 169, 110, .20);
+  background: rgba(161, 175, 136, .20);
 }
 
 #lang-toggle-btn {
