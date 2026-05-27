@@ -330,11 +330,11 @@ body::after {
 
 #wax-seal {
   position: absolute;
-  right: clamp(-136px, -11.9vw, -94px);
+  right: clamp(-175px, -15.5vw, -120px);
   top: 50%;
   transform: translateY(-50%);
-  width:  clamp(187px, 23.8vw, 272px);
-  height: clamp(187px, 23.8vw, 272px);
+  width:  clamp(240px, 31vw, 350px);
+  height: clamp(240px, 31vw, 350px);
   z-index: 20;
   animation: sealGlow 3s ease-in-out infinite;
 }
@@ -447,7 +447,7 @@ body::after {
 }
 .couple-names {
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(40px, 8vw, 96px);
+  font-size: clamp(48px, 9.6vw, 115px);
   color: #5E7848;
   line-height: 1.05;
 }
@@ -917,7 +917,7 @@ footer {
 
 @media (max-width: 768px) {
   .fcorner    { width: clamp(52px, 13vw, 75px); }
-  #wax-seal   { width: 150px; height: 150px; right: -75px; }
+  #wax-seal   { width: 192px; height: 192px; right: -96px; }
   #flap-left  { width: 62%; }
   #flap-right { width: 41%; }
   .gc-thumb { width: 52px; height: 38px; }
