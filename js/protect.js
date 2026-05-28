@@ -74,7 +74,7 @@
 
   function warnConsole() {
     console.clear();
-    console.log(1
+    console.log(
       '%c⛔ Stop!',
       'color:#C9A96E;font-size:52px;font-weight:bold;'
     );

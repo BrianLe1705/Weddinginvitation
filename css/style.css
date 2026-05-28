@@ -124,9 +124,14 @@ body::after {
   inset: 0;
   z-index: 0;
   background: url('../images/couple.png')
-    center / cover no-repeat;
+    center / 100% 100% no-repeat;
   opacity: 0;
   will-change: opacity;
+}
+@media (orientation: landscape) {
+  #couple-bg {
+    background-size: cover;
+  }
 }
 
 #particles {
@@ -137,7 +142,7 @@ body::after {
 }
 
 #hero {
-  height: 320vh;
+  height: 200vh;
   position: relative;
 }
 #hero-sticky {
@@ -480,14 +485,14 @@ body::after {
 #sec-family {
   background: var(--cream);
   text-align: center;
-  padding: clamp(56px, 9vw, 110px) clamp(20px, 5vw, 60px);
+  padding: clamp(28px, 4.5vw, 56px) clamp(20px, 5vw, 60px);
 }
 .family-grid {
   display: flex;
   align-items: flex-start;
   justify-content: center;
   max-width: 680px;
-  margin: 0 auto clamp(40px, 6vw, 64px);
+  margin: 0 auto clamp(20px, 3vw, 36px);
 }
 .family-side {
   flex: 1;
@@ -525,7 +530,7 @@ body::after {
   color: var(--warm);
   line-height: 1.9;
   max-width: 600px;
-  margin: 0 auto clamp(36px, 5vw, 58px);
+  margin: 0 auto clamp(18px, 2.5vw, 32px);
   opacity: .88;
 }
 .family-couple {
@@ -533,19 +538,35 @@ body::after {
   align-items: center;
   justify-content: center;
   gap: 0;
-  flex-wrap: wrap;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.family-bride-half {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.family-groom-half {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 .family-groom,
 .family-bride {
   font-family: 'Madelyn', 'Great Vibes', cursive;
-  font-size: clamp(44px, 8vw, 78px);
+  font-size: clamp(56px, 10.5vw, 100px);
   color: #5E7848;
   line-height: 1.1;
 }
 .family-amp {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-size: clamp(28px, 4.5vw, 50px);
+  font-size: clamp(36px, 6vw, 64px);
   color: var(--champ);
   margin: 0 clamp(10px, 2vw, 20px);
   line-height: 1;
@@ -945,6 +966,8 @@ footer {
 
 @media (max-width: 480px) {
   .fc-main { font-size: clamp(36px, 12vw, 56px); }
+  .family-name { font-size: 11px; letter-spacing: 0; }
+  .family-side { padding: 0 8px; }
 }
 
 .loader-lang-btns {
