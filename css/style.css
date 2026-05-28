@@ -11,6 +11,22 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* ── Custom bouquet cursor (desktop only) ── */
+@media (hover: hover) and (pointer: fine) {
+  * { cursor: none !important; }
+
+  #custom-cursor {
+    position: fixed;
+    font-size: 22px;
+    line-height: 1;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -85%);
+    will-change: left, top;
+    user-select: none;
+  }
+}
+
 :root {
   --ivory:   #F9F3E8;
   --paper:   #F5EDD8;
