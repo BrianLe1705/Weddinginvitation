@@ -372,7 +372,7 @@ body::after {
 
 #scroll-cue {
   position: absolute;
-  bottom: 28px;
+  bottom: 52px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -960,7 +960,9 @@ footer {
 
 @media (max-width: 768px) {
   .fcorner    { width: clamp(52px, 13vw, 75px); }
-  #wax-seal   { width: 192px; height: 192px; right: -96px; }
+  #wax-seal   { width: 192px; height: 192px; right: -96px; top: calc(50% - 52px); }
+  #scroll-cue { bottom: 110px; }
+  #flap-content { padding-bottom: 104px; }
   #flap-left  { width: 62%; }
   #flap-right { width: 41%; }
   .gc-thumb { width: 52px; height: 38px; }
