@@ -392,20 +392,9 @@ body::after {
   text-transform: uppercase;
   animation: cueFlash 2.4s ease-in-out infinite;
 }
-.sc-finger {
-  font-size: 20px;
-  line-height: 1;
-  filter: sepia(1) saturate(1.5) brightness(1.8);
-  animation: fingerFloat 1.8s ease-in-out infinite;
-}
 @keyframes cueFlash {
   0%, 100% { opacity: .38; }
   50%       { opacity: 1;   }
-}
-@keyframes fingerFloat {
-  0%   { transform: translateY(4px); opacity: .5; }
-  50%  { transform: translateY(-6px); opacity: 1;  }
-  100% { transform: translateY(4px); opacity: .5; }
 }
 
 #music-btn {
