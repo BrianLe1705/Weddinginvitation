@@ -12,12 +12,12 @@ const musicBtn  = document.getElementById('music-btn');
 const icOn      = document.getElementById('ic-on');
 const icOff        = document.getElementById('ic-off');
 const langToggleBtn = document.getElementById('lang-toggle-btn');
+const rsvpNavBtn   = document.getElementById('rsvp-nav-btn');
 const btnLangEn    = document.getElementById('btn-lang-en');
 const btnLangVi    = document.getElementById('btn-lang-vi');
 
 document.body.style.overflow = 'hidden';
 
-// Block background taps on the loader — only the lang buttons should act
 loader.addEventListener('click', e => e.stopPropagation());
 
 function dismissLoader() {
@@ -25,6 +25,7 @@ function dismissLoader() {
   loader.classList.add('out');
   setTimeout(() => loader.remove(), 950);
   langToggleBtn.style.display = '';
+  rsvpNavBtn.style.display = '';
   initAudio();
 }
 
@@ -150,6 +151,19 @@ gsap.utils.toArray('.fu').forEach(el => {
     }
   );
 });
+
+rsvpNavBtn.addEventListener('click', () => {
+  if (rsvpNavBtn.classList.contains('at-bottom')) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    document.getElementById('sec-rsvp').scrollIntoView({ behavior: 'smooth' });
+  }
+});
+
+new IntersectionObserver(
+  entries => rsvpNavBtn.classList.toggle('at-bottom', entries[0].isIntersecting),
+  { threshold: 0.1 }
+).observe(document.querySelector('footer'));
 
 let audioReady = false;
 let playing    = false;

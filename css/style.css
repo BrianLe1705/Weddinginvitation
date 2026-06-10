@@ -397,10 +397,17 @@ body::after {
   50%       { opacity: 1;   }
 }
 
-#music-btn {
+#bottom-controls {
   position: fixed;
   bottom: clamp(18px, 3vw, 30px);
-  right:  clamp(18px, 3vw, 30px);
+  right: clamp(18px, 3vw, 30px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1000;
+}
+
+#music-btn {
   width:  clamp(42px, 5vw, 50px);
   height: clamp(42px, 5vw, 50px);
   border-radius: 50%;
@@ -411,7 +418,6 @@ body::after {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 1000;
   box-shadow: 0 4px 20px rgba(44, 31, 14, .10);
   transition: border-color .3s, box-shadow .3s;
   -webkit-tap-highlight-color: transparent;
@@ -1018,10 +1024,8 @@ footer {
   background: rgba(161, 175, 136, .20);
 }
 
+#rsvp-nav-btn,
 #lang-toggle-btn {
-  position: fixed;
-  bottom: clamp(18px, 3vw, 30px);
-  right: calc(clamp(18px, 3vw, 30px) + clamp(42px, 5vw, 50px) + 10px);
   height: clamp(42px, 5vw, 50px);
   padding: 0 clamp(10px, 1.8vw, 16px);
   border-radius: 999px;
@@ -1035,14 +1039,48 @@ footer {
   color: var(--gold);
   text-transform: uppercase;
   cursor: pointer;
-  z-index: 1000;
   box-shadow: 0 4px 20px rgba(44, 31, 14, .10);
-  transition: border-color .3s, box-shadow .3s, color .3s;
+  transition: border-color .3s, box-shadow .3s, color .3s, padding .3s, border-radius .3s, width .3s;
   -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
 }
 
+#rsvp-nav-btn:hover,
 #lang-toggle-btn:hover {
   border-color: var(--champ);
   box-shadow: 0 4px 24px rgba(201, 169, 110, .22);
   color: var(--champ);
 }
+
+#rsvp-nav-btn {
+  background: var(--champ);
+  border-color: var(--champ);
+  color: var(--ivory);
+  font-weight: 700;
+}
+#rsvp-nav-btn:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--ivory);
+}
+
+#rsvp-nav-btn.at-bottom {
+  width: clamp(42px, 5vw, 50px);
+  padding: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-top-icon {
+  display: none;
+  width: 24px; height: 24px;
+  fill: none;
+  stroke: var(--ivory);
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+#rsvp-nav-btn.at-bottom .btn-rsvp-label { display: none; }
+#rsvp-nav-btn.at-bottom .btn-top-icon   { display: block; }

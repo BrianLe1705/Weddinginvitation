@@ -39,21 +39,28 @@
   </div>
 </div>
 
-<button id="music-btn" aria-label="Toggle music">
-  <svg id="ic-on" viewBox="0 0 24 24">
-    <path d="M9 18V5l12-2v13"/>
-    <circle cx="6"  cy="18" r="3"/>
-    <circle cx="18" cy="16" r="3"/>
-  </svg>
-  <svg id="ic-off" viewBox="0 0 24 24" style="display:none">
-    <path d="M9 18V5l12-2v13"/>
-    <circle cx="6"  cy="18" r="3"/>
-    <circle cx="18" cy="16" r="3"/>
-    <line x1="3" y1="3" x2="21" y2="21" stroke="var(--champ)" stroke-width="1.5"/>
-  </svg>
-</button>
-
-<button id="lang-toggle-btn" aria-label="Toggle language" style="display:none">VI</button>
+<div id="bottom-controls">
+  <button id="rsvp-nav-btn" aria-label="RSVP" style="display:none">
+    <span class="btn-rsvp-label">RSVP</span>
+    <svg class="btn-top-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </button>
+  <button id="lang-toggle-btn" aria-label="Toggle language" style="display:none">VI</button>
+  <button id="music-btn" aria-label="Toggle music">
+    <svg id="ic-on" viewBox="0 0 24 24">
+      <path d="M9 18V5l12-2v13"/>
+      <circle cx="6"  cy="18" r="3"/>
+      <circle cx="18" cy="16" r="3"/>
+    </svg>
+    <svg id="ic-off" viewBox="0 0 24 24" style="display:none">
+      <path d="M9 18V5l12-2v13"/>
+      <circle cx="6"  cy="18" r="3"/>
+      <circle cx="18" cy="16" r="3"/>
+      <line x1="3" y1="3" x2="21" y2="21" stroke="var(--champ)" stroke-width="1.5"/>
+    </svg>
+  </button>
+</div>
 
 <audio id="wedding-audio" loop preload="auto">
   <source src="music/I do.mp3" type="audio/mpeg">
