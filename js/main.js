@@ -1,6 +1,8 @@
 gsap.registerPlugin(ScrollTrigger);
 window.scrollTo(0, 0);
 
+const directRsvp = window.location.hash === '#sec-rsvp';
+
 const loader    = document.getElementById('loader');
 const envelope  = document.getElementById('envelope');
 const flapL     = document.getElementById('flap-left');
@@ -134,6 +136,10 @@ openTl
 }());
 
 gsap.utils.toArray('.fu').forEach(el => {
+  if (directRsvp) {
+    gsap.set(el, { opacity: 1, y: 0 });
+    return;
+  }
   gsap.fromTo(
     el,
     { opacity: 0, y: 34 },
@@ -150,6 +156,14 @@ gsap.utils.toArray('.fu').forEach(el => {
     }
   );
 });
+
+if (directRsvp) {
+  setLang('en');
+  dismissLoader();
+  setTimeout(() => {
+    document.getElementById('sec-rsvp').scrollIntoView({ behavior: 'instant' });
+  }, 960);
+}
 
 let audioReady = false;
 let playing    = false;
