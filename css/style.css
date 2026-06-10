@@ -386,7 +386,7 @@ body::after {
 #scroll-cue p {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: .22em;
   color: var(--warm);
   text-transform: uppercase;
@@ -419,7 +419,9 @@ body::after {
   justify-content: center;
   cursor: pointer;
   box-shadow: 0 4px 20px rgba(44, 31, 14, .10);
-  transition: border-color .3s, box-shadow .3s;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s ease, border-color .3s, box-shadow .3s;
   -webkit-tap-highlight-color: transparent;
 }
 #music-btn:hover {
@@ -1040,7 +1042,9 @@ footer {
   text-transform: uppercase;
   cursor: pointer;
   box-shadow: 0 4px 20px rgba(44, 31, 14, .10);
-  transition: border-color .3s, box-shadow .3s, color .3s, padding .3s, border-radius .3s, width .3s;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s ease, border-color .3s, box-shadow .3s, color .3s, padding .3s, border-radius .3s, width .3s;
   -webkit-tap-highlight-color: transparent;
   overflow: hidden;
 }
@@ -1084,3 +1088,10 @@ footer {
 }
 #rsvp-nav-btn.at-bottom .btn-rsvp-label { display: none; }
 #rsvp-nav-btn.at-bottom .btn-top-icon   { display: block; }
+
+#rsvp-nav-btn.btn-visible,
+#lang-toggle-btn.btn-visible,
+#music-btn.btn-visible {
+  opacity: 1;
+  pointer-events: auto;
+}

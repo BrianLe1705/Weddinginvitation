@@ -24,8 +24,6 @@ function dismissLoader() {
   document.body.style.overflow = '';
   loader.classList.add('out');
   setTimeout(() => loader.remove(), 950);
-  langToggleBtn.style.display = '';
-  rsvpNavBtn.style.display = '';
   initAudio();
 }
 
@@ -49,6 +47,18 @@ const floatAnim = gsap.to(envelope, {
   repeat: -1,
 });
 
+function showButtons() {
+  rsvpNavBtn.classList.add('btn-visible');
+  langToggleBtn.classList.add('btn-visible');
+  musicBtn.classList.add('btn-visible');
+}
+
+function hideButtons() {
+  rsvpNavBtn.classList.remove('btn-visible');
+  langToggleBtn.classList.remove('btn-visible');
+  musicBtn.classList.remove('btn-visible');
+}
+
 const openTl = gsap.timeline({
   scrollTrigger: {
     trigger: '#hero',
@@ -59,6 +69,12 @@ const openTl = gsap.timeline({
       floatAnim.kill();
       gsap.set(envelope, { y: 0 });
       initAudio();
+    },
+    onLeave() {
+      showButtons();
+    },
+    onEnterBack() {
+      hideButtons();
     },
   },
 });
