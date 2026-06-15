@@ -1,23 +1,20 @@
 (function () {
   'use strict';
 
-  // Only activate on real pointer devices (desktop), not touch screens
   if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
 
-  /* ── Custom cursor ── */
   const cur = document.createElement('div');
   cur.id = 'custom-cursor';
   cur.textContent = '💐';
   document.body.appendChild(cur);
 
-  /* ── Fairy sparkle config ── */
   const COLORS  = ['#C9A96E', '#E8D9B8', '#A1AF88', '#FFF5E0', '#CCD3C0', '#ffffff'];
-  const RATE_MS = 30;   // ms between sparkle spawns
+  const RATE_MS = 30;
   let   lastT   = 0;
 
   function spawnSparkle(x, y) {
     const el   = document.createElement('div');
-    const size = Math.random() * 5 + 2.5;           // 2.5–7.5 px
+    const size = Math.random() * 5 + 2.5;
     const col  = COLORS[Math.floor(Math.random() * COLORS.length)];
 
     Object.assign(el.style, {
@@ -36,7 +33,6 @@
     });
     document.body.appendChild(el);
 
-    // Give each dot a slight random drift upward
     const vx = (Math.random() - 0.5) * 2.2;
     const vy = -(Math.random() * 2.0 + 0.5);
     let   px = x, py = y, op = 1;
@@ -53,7 +49,6 @@
     }());
   }
 
-  /* ── Track mouse ── */
   document.addEventListener('mousemove', function (e) {
     cur.style.left = e.clientX + 'px';
     cur.style.top  = e.clientY + 'px';

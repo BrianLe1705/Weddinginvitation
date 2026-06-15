@@ -6,14 +6,14 @@
   });
 
   document.addEventListener('keydown', function (e) {
-    const ctrl  = e.ctrlKey  || e.metaKey;   // Ctrl on Windows, Cmd on Mac
+    const ctrl  = e.ctrlKey  || e.metaKey;
     const shift = e.shiftKey;
     const key   = e.key;
 
     const blocked =
-      key === 'F12' ||                                        // F12
-      (ctrl && shift && ['I','i','J','j','C','c','K','k'].includes(key)) || // Ctrl+Shift+I/J/C/K
-      (ctrl && ['u','U','s','S'].includes(key));              // Ctrl+U (view-source) / Ctrl+S (save)
+      key === 'F12' ||
+      (ctrl && shift && ['I','i','J','j','C','c','K','k'].includes(key)) ||
+      (ctrl && ['u','U','s','S'].includes(key));
 
     if (blocked) {
       e.preventDefault();
