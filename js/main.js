@@ -235,7 +235,7 @@ const i18n = {
     'flap-date':            '17 · December · 2026',
     'scroll-cue':           'scroll to open',
     'wedding-date':         'Thursday · December 17 · 2026',
-    'wedding-location':     'Hanoi City, Viet Nam',
+    'wedding-location':     'Hanoi, Viet Nam',
     'brides-family':        "Bride's Family",
     'grooms-family':        "Groom's Family",
     'family-message':       'Together with our families, we sincerely invite you to join us in celebrating our wedding ceremony and to share in the joy of this special occasion.',

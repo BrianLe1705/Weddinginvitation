@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(git -C \"C:\\\\Users\\\\Hung\\\\Desktop\\\\Weddinginvitation\" status)",
+      "Bash(git -C \"C:\\\\Users\\\\Hung\\\\Desktop\\\\Weddinginvitation\" diff)",
+      "Bash(git -C \"C:\\\\Users\\\\Hung\\\\Desktop\\\\Weddinginvitation\" add css/style.css index.html js/main.js)",
+      "Bash(git -C 'C:\\\\Users\\\\Hung\\\\Desktop\\\\Weddinginvitation' commit -m ' *)",
+      "Bash(git *)"
+    ]
+  }
+}

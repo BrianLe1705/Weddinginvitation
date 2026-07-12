@@ -235,7 +235,7 @@ body::after {
   z-index: 1;
   will-change: transform;
   transform-origin: right center;
-  background: linear-gradient(160deg, rgba(0, 0, 0, .10) 0%, rgba(255, 252, 248, .10) 100%);
+  background: linear-gradient(160deg, rgba(0, 0, 0, .10) 0%, rgba(255, 252, 248, .10) 100%), url('../images/background.png');
 }
 #flap-right::before {
   content: '';
