@@ -275,7 +275,7 @@ const i18n = {
     'label-dietary':        'Leave us a message',
     'ph-dietary':           'Special request',
     'btn-rsvp':             'Send RSVP',
-    'footer-date':          'December 17, 2026 · Hanoi City',
+    'footer-date':          'December 17, 2026 · Hanoi',
     'footer-made':          'Your presence is truly the most meaningful gift on our special day.',
     'fc-names':             'Cathy & Hung',
     'groom-name':           'Hung',
