@@ -291,7 +291,7 @@ const i18n = {
     'family-bride-p2':      'Chu',
     'date-value-main':      'December 17',
     'venue-name':           'Long Vi Palace',
-    'venue-sub':            '3A Dao Duy Anh st, Kim Lien, Hanoi · 12:00 PM',
+    'venue-sub':            '3A Dao Duy Anh st, Kim Lien, Hanoi · 10:30 PM',
   },
   vi: {
     'hero-eyebrow':         'Celebrating our special day',
@@ -354,7 +354,7 @@ const i18n = {
     'family-bride-p2':      'Linh',
     'date-value-main':      '17 Tháng 12',
     'venue-name':           'Long Vĩ',
-    'venue-sub':            '3A Phố Đào Duy Anh, Kim Liên, Hà Nội · 12:00 trưa',
+    'venue-sub':            '3A Phố Đào Duy Anh, Kim Liên, Hà Nội · 10:30 trưa',
   },
 };
 
