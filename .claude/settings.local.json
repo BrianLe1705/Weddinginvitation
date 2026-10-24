@@ -8,7 +8,12 @@
       "Bash(git -C \"C:\\\\Users\\\\Hung\\\\Desktop\\\\Weddinginvitation\" diff)",
       "Bash(git -C \"C:\\\\Users\\\\Hung\\\\Desktop\\\\Weddinginvitation\" add css/style.css index.html js/main.js)",
       "Bash(git -C 'C:\\\\Users\\\\Hung\\\\Desktop\\\\Weddinginvitation' commit -m ' *)",
-      "Bash(git *)"
+      "Bash(git *)",
+      "Bash(npm view *)",
+      "Bash(npm whoami *)",
+      "Bash(npm --version)",
+      "Bash(npm install *)",
+      "Bash(claude *)"
     ]
   }
 }
