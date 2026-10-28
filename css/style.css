@@ -129,14 +129,27 @@ body::after {
   inset: 0;
   z-index: 0;
   background: url('../images/couple.png')
-    center / 100% 100% no-repeat;
+    center / cover no-repeat;
   opacity: 0;
   will-change: opacity;
 }
-@media (orientation: landscape) {
-  #couple-bg {
-    background-size: cover;
-  }
+#couple-bg2 {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: url('../images/couple2.png')
+    center / cover no-repeat;
+  opacity: 0;
+  will-change: opacity;
+}
+#couple-bg3 {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: url('../images/couple3.png')
+    center / cover no-repeat;
+  opacity: 0;
+  will-change: opacity;
 }
 
 #particles {
@@ -172,16 +185,29 @@ body::after {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   text-align: center;
-  padding: clamp(40px, 6vw, 80px);
+  padding: clamp(32px, 5vw, 64px);
+  padding-bottom: clamp(60px, 10vh, 120px);
   pointer-events: none;
 }
-#envelope-names .eyebrow          { color: var(--ivory); }
-#envelope-names .couple-names     { color: var(--ivory); }
-#envelope-names .couple-names .ampersand { color: rgba(249, 243, 232, .65); }
-#envelope-names .wedding-date     { color: var(--ivory); }
-#envelope-names .wedding-location { color: rgba(249, 243, 232, .70); }
+#envelope-names::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 30%;
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.65));
+  pointer-events: none;
+}
+#envelope-names > * {
+  position: relative;
+  z-index: 1;
+}
+#envelope-names .eyebrow          { display: none; }
+#envelope-names .couple-names     { color: var(--ivory); font-size: clamp(56px, 11.5vw, 138px); white-space: nowrap; }
+#envelope-names .couple-names .ampersand { display: inline; color: rgba(249, 243, 232, .65); font-size: .85em; }
+#envelope-names .wedding-date     { color: var(--ivory); margin-top: 10px; font-size: clamp(22px, 6.5vw, 78px); letter-spacing: .08em; }
+#envelope-names .wedding-location { display: none; }
 
 #flap-left {
   position: absolute;
@@ -304,7 +330,7 @@ body::after {
 }
 .fc-names {
   font-family: 'Cormorant Garamond', serif;
-  font-weight: normal;
+  font-weight: 700;
   font-size: clamp(20px, 3vw, 32px);
   color: var(--warm);
   letter-spacing: .08em;
@@ -313,8 +339,8 @@ body::after {
 }
 .fc-date {
   font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: clamp(16px, 2.8vw, 30px);
+  font-weight: 300;
+  font-size: clamp(22px, 4.5vw, 52px);
   letter-spacing: .20em;
   color: var(--warm);
   text-transform: uppercase;
@@ -589,8 +615,21 @@ body::after {
 }
 
 #sec-details {
-  background: rgba(242, 234, 216, 0.7);
+  background: transparent;
   padding: clamp(70px, 10vw, 120px) clamp(20px, 5vw, 60px);
+  position: relative;
+}
+#sec-details::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 20vh;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.35), transparent);
+  pointer-events: none;
+}
+#sec-details > * {
+  position: relative;
+  z-index: 1;
 }
 .sec-title {
   font-family: 'Cormorant Garamond', serif;
@@ -601,19 +640,37 @@ body::after {
   text-align: center;
   margin-bottom: clamp(40px, 6vw, 70px);
 }
-#sec-details .sec-title,
-#sec-timeline .sec-title,
-#sec-gallery .sec-title,
-#sec-rsvp .sec-title {
+#sec-details .sec-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: clamp(40px, 6.5vw, 72px);
+  color: var(--ivory);
+}
+#sec-timeline .sec-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: clamp(40px, 6.5vw, 72px);
+  color: #5E7848;
+}
+#sec-gallery .sec-title {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
   color: #2E3D20;
 }
+#sec-rsvp .eyebrow      { display: none; }
+#sec-rsvp .sec-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: clamp(40px, 6.5vw, 72px);
+  color: var(--ivory);
+  margin-top: -24px;
+}
 .details-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: 1fr;
   gap: 24px;
-  max-width: 980px;
+  width: fit-content;
+  max-width: 90vw;
   margin: 0 auto;
 }
 .d-card {
@@ -683,6 +740,17 @@ body::after {
   color: var(--cream);
 }
 
+#sec-details .sec-title     { margin-top: -24px; }
+#sec-details .d-card        { background: rgba(249,243,232,.82); border-color: rgba(201,169,110,.18); text-align: center; width: fit-content; margin: 0 auto; }
+.d-divider { width: 100%; height: 1px; background: rgba(201,169,110,.25); margin: 24px 0; }
+#sec-details .d-icon        { display: none; }
+#sec-details .d-value       { color: #5E7848; font-weight: 700; font-size: clamp(38px, 6vw, 64px); }
+#sec-details .d-sub         { color: #5E7848; opacity: .90; font-size: clamp(17px, 2.5vw, 28px); font-weight: 500; white-space: nowrap; }
+#sec-details .d-label       { color: #5E7848; font-size: 14px; font-weight: 700; letter-spacing: .36em; }
+#sec-details .d-map-btn     { color: #5E7848; border-color: #5E7848; font-size: 11px; }
+#sec-details .d-map-btn:hover,
+#sec-details .d-map-btn:active { background: #5E7848; color: var(--ivory); }
+
 #sec-timeline {
   background: var(--cream);
   padding: clamp(70px, 10vw, 120px) clamp(20px, 5vw, 60px);
@@ -727,23 +795,23 @@ body::after {
 .tl-time {
   font-family: 'Montserrat', sans-serif;
   font-weight: 200;
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: .35em;
-  color: var(--champ);
+  color: #5E7848;
   text-transform: uppercase;
 }
 .tl-ev {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 400;
-  font-size: clamp(17px, 2.2vw, 21px);
-  color: var(--dark);
+  font-size: clamp(20px, 2.8vw, 26px);
+  color: #5E7848;
   margin-top: 3px;
 }
 .tl-place {
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
-  font-size: 9.5px;
-  color: var(--warm);
+  font-size: 12px;
+  color: #5E7848;
   opacity: .62;
   margin-top: 3px;
 }
@@ -855,24 +923,45 @@ body::after {
   display: block;
 }
 
+#sec-blank {
+  height: 50vh;
+  background: transparent;
+}
+
 #sec-rsvp {
-  background: rgba(255, 248, 240, 0.8);
+  background: transparent;
   text-align: center;
   padding: clamp(70px, 10vw, 120px) clamp(20px, 5vw, 60px);
+  position: relative;
+}
+#sec-rsvp::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 27vh;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.35), transparent);
+  pointer-events: none;
+}
+#sec-rsvp > * {
+  position: relative;
+  z-index: 1;
 }
 .rsvp-form {
   max-width: 480px;
   margin: clamp(36px, 5vw, 56px) auto 0;
+  background: rgba(249, 243, 232, .88);
+  border: 1px solid rgba(201, 169, 110, .25);
+  padding: clamp(28px, 4vw, 48px) clamp(24px, 4vw, 44px);
 }
 .fg { margin-bottom: 26px; text-align: left; }
 .fg label {
   display: block;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  font-size: 11px;
-  letter-spacing: .44em;
-  color: #2E3D20;
-  text-transform: uppercase;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 36px;
+  letter-spacing: .02em;
+  color: #5E7848;
+  text-transform: none;
   margin-bottom: 9px;
 }
 .fg input,
@@ -881,16 +970,25 @@ body::after {
   width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(201, 169, 110, .38);
+  border-bottom: 1px solid rgba(94, 120, 72, .38);
   padding: 9px 0;
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(16px, 2.2vw, 20px);
-  color: var(--dark);
+  font-weight: 700;
+  font-size: clamp(36px, 5vw, 48px);
+  color: #5E7848;
   outline: none;
   transition: border-color .3s;
   -webkit-appearance: none;
   border-radius: 0;
 }
+.fg input::placeholder,
+.fg textarea::placeholder {
+  font-size: clamp(28px, 4vw, 42px);
+  font-family: 'Cormorant Garamond', serif;
+  color: rgba(128, 128, 128, 0.65);
+}
+.fg select:invalid { color: rgba(128, 128, 128, 0.65); font-size: clamp(28px, 4vw, 42px); }
+.fg select option  { color: #5E7848; }
 .fg input:focus,
 .fg select:focus,
 .fg textarea:focus { border-color: var(--champ); }
@@ -917,14 +1015,20 @@ body::after {
 .btn-rsvp:disabled { cursor: default; }
 
 footer {
-  background: var(--dark);
+  background: linear-gradient(to bottom, transparent, var(--dark));
   text-align: center;
-  padding: clamp(60px, 8vw, 100px) 40px;
+  min-height: 60vh;
+  padding: 0 40px clamp(60px, 8vw, 100px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
 }
 .ft-mono {
   font-family: 'Great Vibes', cursive;
   font-size: clamp(48px, 8vw, 80px);
-  color: var(--champ);
+  color: var(--ivory);
   margin-bottom: 18px;
 }
 .ft-text {
@@ -932,7 +1036,7 @@ footer {
   font-weight: 300;
   font-size: 10px;
   letter-spacing: .38em;
-  color: rgba(220, 232, 212, .75);
+  color: var(--ivory);
   text-transform: uppercase;
 }
 .ft-made { margin-top: 14px; opacity: .55; }
@@ -978,7 +1082,7 @@ footer {
 
 @media (max-width: 480px) {
   .fc-main { font-size: clamp(36px, 12vw, 56px); }
-  .fc-date { font-size: clamp(13px, 3.6vw, 16px); letter-spacing: .08em; }
+  .fc-date { font-size: clamp(16px, 5.5vw, 24px); letter-spacing: .08em; }
   #flap-content { padding-left: 12px; padding-right: 12px; }
   .wedding-date { font-size: 15px; letter-spacing: .06em; }
   .wedding-location { font-size: 14px; letter-spacing: .08em; }

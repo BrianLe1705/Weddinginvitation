@@ -6,6 +6,8 @@ const envelope  = document.getElementById('envelope');
 const flapL     = document.getElementById('flap-left');
 const flapR     = document.getElementById('flap-right');
 const coupleBg  = document.getElementById('couple-bg');
+const coupleBg2 = document.getElementById('couple-bg2');
+const coupleBg3 = document.getElementById('couple-bg3');
 const scrollCue = document.getElementById('scroll-cue');
 const audio     = document.getElementById('wedding-audio');
 const musicBtn  = document.getElementById('music-btn');
@@ -101,6 +103,32 @@ openTl
     { opacity: 1, scale: 1, ease: 'power1.out', duration: .72 },
     0.30
   );
+
+ScrollTrigger.create({
+  trigger: '#content',
+  start: 'top 50%',
+  onEnter() {
+    gsap.to(coupleBg,  { opacity: 0, duration: 1.4, ease: 'power1.inOut' });
+    gsap.to(coupleBg2, { opacity: 1, duration: 1.4, ease: 'power1.inOut' });
+  },
+  onLeaveBack() {
+    gsap.to(coupleBg2, { opacity: 0, duration: 1.4, ease: 'power1.inOut' });
+    gsap.to(coupleBg,  { opacity: 1, duration: 1.4, ease: 'power1.inOut' });
+  },
+});
+
+ScrollTrigger.create({
+  trigger: '#sec-rsvp',
+  start: 'top 50%',
+  onEnter() {
+    gsap.to(coupleBg2, { opacity: 0, duration: 1.4, ease: 'power1.inOut' });
+    gsap.to(coupleBg3, { opacity: 1, duration: 1.4, ease: 'power1.inOut' });
+  },
+  onLeaveBack() {
+    gsap.to(coupleBg3, { opacity: 0, duration: 1.4, ease: 'power1.inOut' });
+    gsap.to(coupleBg2, { opacity: 1, duration: 1.4, ease: 'power1.inOut' });
+  },
+});
 
 (function initParticles() {
   const canvas = document.getElementById('particles');
@@ -232,16 +260,16 @@ musicBtn.addEventListener('click', e => {
 const i18n = {
   en: {
     'hero-eyebrow':         'Celebrating our special day',
-    'flap-date':            '17 · December · 2026',
+    'flap-date':            '17 . 12 . 2026',
     'scroll-cue':           'scroll to open',
-    'wedding-date':         'Thursday · December 17 · 2026',
+    'wedding-date':         'December 17 · 2026',
     'wedding-location':     'Long Vi, Ha Noi',
     'brides-family':        "Bride's Family",
     'grooms-family':        "Groom's Family",
     'family-message':       'Together with our families, we sincerely invite you to join us in celebrating our wedding ceremony and to share in the joy of this special occasion.',
     'details-title':        'The Wedding Details',
-    'date-label':           'Date',
-    'date-sub':             'Thursday',
+    'date-label':           'Date and Time',
+    'date-sub':             'Thursday, 10:30 AM',
     'ceremony-venue-label': 'Ceremony Venue',
     'map-btn':              'Open in Maps',
     'dress-label':          'Dress Code',
@@ -289,22 +317,22 @@ const i18n = {
     'family-bride-name':    'Cathy Chu',
     'family-bride-p1':      'Cathy',
     'family-bride-p2':      'Chu',
-    'date-value-main':      'December 17',
+    'date-value-main':      '17 | 12 | 2026',
     'venue-name':           'Long Vi Palace',
-    'venue-sub':            '3A Dao Duy Anh st, Kim Lien, Hanoi · 10:30 AM',
+    'venue-sub':            '3A Dao Duy Anh st, Kim Lien, Hanoi',
   },
   vi: {
     'hero-eyebrow':         'Celebrating our special day',
-    'flap-date':            '17 · Tháng 12 · 2026',
+    'flap-date':            '17 . 12 . 2026',
     'scroll-cue':           'cuộn để mở',
-    'wedding-date':         'Thứ Năm · 17 Tháng 12 · 2026',
+    'wedding-date':         '17 Tháng 12 · 2026',
     'wedding-location':     'Long Vĩ, Hà Nội',
     'brides-family':        'Nhà Gái',
     'grooms-family':        'Nhà Trai',
     'family-message':       'Trân trọng kính mời tới dự bữa tiệc Lễ Thành Hôn cùng gia đình chúng tôi',
     'details-title':        'Lễ Thành Hôn',
-    'date-label':           'Ngày',
-    'date-sub':             'Thứ Năm',
+    'date-label':           'Ngày và Giờ',
+    'date-sub':             'Thứ Năm, 10:30 Sáng',
     'ceremony-venue-label': 'Địa Điểm Tổ Chức',
     'map-btn':              'Xem bản đồ',
     'dress-label':          'Trang Phục',
@@ -352,9 +380,9 @@ const i18n = {
     'family-bride-name':    'Cathy Hà Linh',
     'family-bride-p1':      'Hà',
     'family-bride-p2':      'Linh',
-    'date-value-main':      '17 Tháng 12',
+    'date-value-main':      '17 | 12 | 2026',
     'venue-name':           'Long Vĩ',
-    'venue-sub':            '3A Phố Đào Duy Anh, Kim Liên, Hà Nội · 10:30 sáng',
+    'venue-sub':            '3A Phố Đào Duy Anh, Kim Liên, Hà Nội',
   },
 };
 
