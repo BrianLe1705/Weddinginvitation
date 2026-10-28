@@ -618,6 +618,9 @@ body::after {
   background: transparent;
   padding: clamp(70px, 10vw, 120px) clamp(20px, 5vw, 60px);
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 #sec-details::before {
   content: '';
@@ -924,7 +927,7 @@ body::after {
 }
 
 #sec-blank {
-  height: 50vh;
+  height: 25vh;
   background: transparent;
 }
 
