@@ -117,6 +117,15 @@ ScrollTrigger.create({
   },
 });
 
+const bottomControls = document.getElementById('bottom-controls');
+
+ScrollTrigger.create({
+  trigger: 'footer',
+  start: 'top 90%',
+  onEnter()     { gsap.to(bottomControls, { opacity: 0, duration: 0.6, ease: 'power1.inOut', pointerEvents: 'none' }); bottomControls.style.pointerEvents = 'none'; },
+  onLeaveBack() { gsap.to(bottomControls, { opacity: 1, duration: 0.6, ease: 'power1.inOut' }); bottomControls.style.pointerEvents = ''; },
+});
+
 ScrollTrigger.create({
   trigger: '#sec-rsvp',
   start: 'top 50%',
@@ -444,7 +453,6 @@ document.getElementById('rsvp-form').addEventListener('submit', async e => {
   const els = form.elements;
   const data = {
     name:       els['name'].value.trim(),
-    side:       els['side'].value,
     phone:      els['phone'].value.trim(),
     attendance: els['attendance'].value,
     guests:     els['guests'].value,
