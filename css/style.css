@@ -996,6 +996,43 @@ body::after {
 .fg select:focus,
 .fg textarea:focus { border-color: var(--champ); }
 .fg select option  { background: var(--cream); }
+.radio-group {
+  display: flex;
+  gap: clamp(24px, 4vw, 48px);
+  padding: 10px 0;
+}
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: clamp(20px, 3vw, 28px);
+  color: #5E7848;
+}
+.radio-label input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid rgba(94,120,72,.5);
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+  cursor: pointer;
+  transition: border-color .3s;
+}
+.radio-label input[type="radio"]:checked {
+  border-color: #5E7848;
+}
+.radio-label input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: #5E7848;
+  border-radius: 50%;
+}
 .btn-rsvp {
   background: transparent;
   border: 1px solid var(--champ);

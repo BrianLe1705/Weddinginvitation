@@ -361,7 +361,7 @@ const i18n = {
     'rsvp-title':           'Xác nhận tham dự',
     'label-name':           'Họ và Tên',
     'ph-name':              'Họ tên đầy đủ',
-    'label-side':           'Bạn sẽ tham dự cùng ai?',
+    'label-side':           'Quý khách tham dự cùng Nhà trai hay Nhà gái',
     'opt-bride-side':       'Nhà Gái',
     'opt-groom-side':       'Nhà Trai',
     'label-phone':          'Số Điện Thoại',
@@ -456,7 +456,7 @@ document.getElementById('rsvp-form').addEventListener('submit', async e => {
     phone:      els['phone'].value.trim(),
     attendance: els['attendance'].value,
     guests:     els['guests'].value,
-    dietary:    els['dietary'].value.trim(),
+    side:       (form.querySelector('input[name="side"]:checked') || {}).value || '',
   };
 
   try {
