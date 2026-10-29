@@ -13,7 +13,8 @@
       "Bash(npm whoami *)",
       "Bash(npm --version)",
       "Bash(npm install *)",
-      "Bash(claude *)"
+      "Bash(claude *)",
+      "WebFetch(domain:imgur.com)"
     ]
   }
 }
