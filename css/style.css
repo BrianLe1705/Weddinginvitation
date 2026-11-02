@@ -137,8 +137,9 @@ body::after {
   position: fixed;
   inset: 0;
   z-index: 0;
-  background: url('../images/couple2.png')
-    center / cover no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   opacity: 0;
   will-change: opacity;
 }
@@ -146,8 +147,9 @@ body::after {
   position: fixed;
   inset: 0;
   z-index: 0;
-  background: url('../images/couple3.png')
-    center / cover no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   opacity: 0;
   will-change: opacity;
 }
@@ -251,7 +253,7 @@ body::after {
   z-index: 1;
   will-change: transform;
   transform-origin: right center;
-  background: linear-gradient(160deg, rgba(0, 0, 0, .10) 0%, rgba(255, 252, 248, .10) 100%), url('../images/background.png') center / cover no-repeat;
+  background: linear-gradient(160deg, rgba(0, 0, 0, .10) 0%, rgba(255, 252, 248, .10) 100%), url('../images/background.png');
 }
 #flap-right::before {
   content: '';

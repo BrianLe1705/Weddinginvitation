@@ -85,16 +85,14 @@ openTl
   .to(scrollCue, { opacity: 0, duration: .12 }, 0)
   .to(flapL, {
     x: '-108%',
-    y: '10%',
-    rotationZ: -9,
+    rotationZ: -1.8,
     transformOrigin: 'left center',
     ease: 'power2.inOut',
     duration: 1,
   }, 0.04)
   .to(flapR, {
     x: '108%',
-    y: '7%',
-    rotationZ: 7,
+    rotationZ: 1.2,
     transformOrigin: 'right center',
     ease: 'power2.inOut',
     duration: .92,
@@ -105,6 +103,29 @@ openTl
     { opacity: 1, scale: 1, ease: 'power1.out', duration: .72 },
     0.30
   );
+
+let bg2Loaded = false;
+let bg3Loaded = false;
+
+function loadBg2() {
+  if (!bg2Loaded) {
+    bg2Loaded = true;
+    coupleBg2.style.backgroundImage = "url('images/couple2.png')";
+  }
+}
+
+function loadBg3() {
+  if (!bg3Loaded) {
+    bg3Loaded = true;
+    coupleBg3.style.backgroundImage = "url('images/couple3.png')";
+  }
+}
+
+ScrollTrigger.create({
+  trigger: '#content',
+  start: 'top 80%',
+  onEnter() { loadBg2(); },
+});
 
 ScrollTrigger.create({
   trigger: '#content',
@@ -126,6 +147,12 @@ ScrollTrigger.create({
   start: 'top 90%',
   onEnter()     { gsap.to(bottomControls, { opacity: 0, duration: 0.6, ease: 'power1.inOut', pointerEvents: 'none' }); bottomControls.style.pointerEvents = 'none'; },
   onLeaveBack() { gsap.to(bottomControls, { opacity: 1, duration: 0.6, ease: 'power1.inOut' }); bottomControls.style.pointerEvents = ''; },
+});
+
+ScrollTrigger.create({
+  trigger: '#sec-rsvp',
+  start: 'top 80%',
+  onEnter() { loadBg3(); },
 });
 
 ScrollTrigger.create({
