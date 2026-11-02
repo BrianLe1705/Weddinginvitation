@@ -85,14 +85,16 @@ openTl
   .to(scrollCue, { opacity: 0, duration: .12 }, 0)
   .to(flapL, {
     x: '-108%',
-    rotationZ: -1.8,
+    y: '10%',
+    rotationZ: -9,
     transformOrigin: 'left center',
     ease: 'power2.inOut',
     duration: 1,
   }, 0.04)
   .to(flapR, {
     x: '108%',
-    rotationZ: 1.2,
+    y: '7%',
+    rotationZ: 7,
     transformOrigin: 'right center',
     ease: 'power2.inOut',
     duration: .92,
@@ -377,7 +379,7 @@ const i18n = {
     'btn-rsvp':             'Gửi Xác Nhận',
     'footer-date':          '17 Tháng 12, 2026 · Hà Nội',
     'footer-made':          'Cảm ơn Quý khách đã dành tình cảm cho Cô dâu và Chú rể. Sự hiện diện của Quý Khách chính là món quà ý nghĩa nhất trong ngày vui của gia đình chúng tôi',
-    'fc-names':             'Cathy & Hưng',
+    'fc-names':             'Hà Linh & Gia Hưng',
     'groom-name':           'Hưng',
     'family-bride-father':  'Ông Chu Đình Lương',
     'family-bride-mother':  'Bà Nguyễn Thị Hương Giang',
