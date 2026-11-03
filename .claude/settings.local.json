@@ -14,7 +14,8 @@
       "Bash(npm --version)",
       "Bash(npm install *)",
       "Bash(claude *)",
-      "WebFetch(domain:imgur.com)"
+      "WebFetch(domain:imgur.com)",
+      "Bash(awk '{print $5, $9}')"
     ]
   }
 }

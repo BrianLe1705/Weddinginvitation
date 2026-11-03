@@ -27,6 +27,11 @@ function dismissLoader() {
   loader.classList.add('out');
   setTimeout(() => loader.remove(), 950);
   initAudio();
+  ['images/couple.png', 'images/background.png'].forEach(src => {
+    const img = new Image();
+    if (img.decode) { img.src = src; img.decode().catch(() => {}); }
+    else img.src = src;
+  });
 }
 
 btnLangEn.addEventListener('click', e => {
